@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- Delete by Yanglu 2017.11.7-->
+    <!--
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+
+-->
+    <!-- true：自动建表自动升级。数据连接无问题，在datasource中设置的schema中自动建表
+    2017/10/19 By Yanglu
+    <property name="databaseSchemaUpdate" value="true" />
+    -->
+
+    <!--
+        <property name="databaseSchemaUpdate" value="false"/>
+        <property name="jobExecutorActivate" value="false"/>
+    </bean>
+    -->
+    <!-- -->
+
+
+    <!-- Add by Yanglu 2017.11.7 使用自己定义的Configuration -->
+    <bean id="processEngineConfiguration" class="org.activiti.spring.LocalSpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="databaseSchemaUpdate" value="false"/>
+        <property name="jobExecutorActivate" value="false"/>
+        <property name="activityBehaviorFactory" ref="localActivityBehaviorFactory"/>
+    </bean>
+
+    <!-- Add by Yanglu 2017.11.7 注入自定义的Factory -->
+    <bean id="localActivityBehaviorFactory"
+          class="org.activiti.engine.impl.bpmn.parser.factory.LocalDefaultLocalActivityBehaviorFactory"/>
+
+    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
+
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
+    </bean>
+
+    <bean id="repositoryService" factory-bean="processEngine"
+          factory-method="getRepositoryService"/>
+    <bean id="runtimeService" factory-bean="processEngine"
+          factory-method="getRuntimeService"/>
+    <bean id="taskService" factory-bean="processEngine"
+          factory-method="getTaskService"/>
+    <bean id="historyService" factory-bean="processEngine"
+          factory-method="getHistoryService"/>
+    <bean id="managementService" factory-bean="processEngine"
+          factory-method="getManagementService"/>
+    <bean id="identityService" factory-bean="processEngine"
+          factory-method="getIdentityService"/>
+
+    <!--
+        Add by Yanglu 2017.10.26
+        使用activiti-rest服务，需要注入formService 在FormDataResource中使用
+    -->
+    <bean id="formService" factory-bean="processEngine"
+          factory-method="getFormService"/>
+
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/activiti?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"/>
+        <property name="username" value="activiti"/>
+        <property name="password" value="activiti"/>
+        <property name="defaultAutoCommit" value="false"/>
+    </bean>
+
+
+    <!-- Add by Yanglu 2017.10.26
+        使用activiti-rest服务
+    -->
+    <bean id="restResponseFactory" class="org.activiti.rest.service.api.RestResponseFactory"/>
+
+    <!-- Add by Yanglu 2017.10.26
+        启动出错，缺少此class的definition
+    -->
+    <bean id="contentTypeResolver" class="org.activiti.rest.common.application.DefaultContentTypeResolver"/>
+
+
+    <!--
+       ️Add by Yanglu 2017.10.30
+        为实现TaskService 的expression的返回值写法
+        声明本地的Service 目的是配合 activiti:resultVariable="localServiceResult">
+    -->
+    <!-- Delete by Yanglu 2017.11.7 一时删除 修改不要
+    <bean id="crfServiceResolver" class="com.com.bmsmart.service.local.impl.LocalTaskServiceImpl"/>
+    -->
+
+
+    <!--
+   ️Add by Yanglu 2017.10.31
+    实现JavaDelegate接口的Class交给spring管理，以便在其中注入服务Class
+    -->
+    <bean id="CRFDelegateService" class="com.bmsmart.service.activiti.java.CrfDelegateService"/>
+    <bean id="DICDelegateService" class="com.bmsmart.service.activiti.java.DicDelegateService"/>
+    <bean id="ANNDelegateService" class="com.bmsmart.service.activiti.java.AnnDelegateService"/>
+    <bean id="NBMDelegateService" class="com.bmsmart.service.activiti.java.NbmDelegateService"/>
+
+    <!--
+     Add by Yanglu 2017.11.1
+     Rule的DelegateService 在5.22.0与6.0.0的execute方法调用不一样
+     此处为5.22的定义 在xml中 采用的是activiti:class="xxxx"的方法，delegateExpress的方法不支持
+     6.0.0是否支持再调查
+     此处加入bean定义是为了在非spring方式使用此Class的时候可以取得spring的内容
+
+     -->
+    <bean id="RuleDelegateService1" class="com.bmsmart.service.activiti.rule.RuleDelegateService1"/>
+    <bean id="RuleDelegateService2" class="com.bmsmart.service.activiti.rule.RuleDelegateService2"/>
+
+
+</beans>

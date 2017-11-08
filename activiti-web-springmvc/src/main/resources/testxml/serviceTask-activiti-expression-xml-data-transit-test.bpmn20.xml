@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="my-process" isExecutable="true">
+    <startEvent id="start"></startEvent>
+    <endEvent id="end"></endEvent>
+
+
+
+
+    <!--
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    ■ Add by Yanglu 2017.10.30 ■
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+
+    1. 使用acvitivi:expression方式进行service调用
+
+    【前提】：
+      A）crfServiceResolver在xml中注入为spring的bean
+      B）返回的activiti:resultVariable="resultStr" 中resultStr需为String类型(其他类型暂时报错，如何解决待查）
+
+    2. 按照flow调用每一个serviceTask时，前一个resultVariable可以作为后一个方法的input，需要采用UEL表达式进行书写
+       如${className.getMethod()}代表一个注入为className的springBean的getMethod()方法的调用
+
+
+    -->
+    <serviceTask id="servicetask1" name="CRFService"
+                 activiti:expression="#{crfServiceResolver.getLocalTaskServiceResult(null)}"
+                 activiti:resultVariable="resultStr">
+
+
+    </serviceTask>
+
+    <serviceTask id="servicetask2" name="CRFService"
+                 activiti:expression="#{crfServiceResolver.getLocalTaskServiceResult(resultStr)}"
+                 activiti:resultVariable="resultStr">
+
+
+    </serviceTask>
+    <serviceTask id="servicetask3" name="CRFService"
+                 activiti:expression="#{crfServiceResolver.getLocalTaskServiceResult(resultStr)}"
+                 activiti:resultVariable="resultStr">
+
+
+    </serviceTask>
+
+    <serviceTask id="servicetask4"
+                 name="DICService"
+                 activiti:class="com.bmsmart.service.activiti.java.DicDelegateService">
+      <extensionElements>
+        <activiti:field name="text" expression="${resultStr}" />
+      </extensionElements>
+    </serviceTask>
+
+
+
+
+
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="servicetask1"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="servicetask1" targetRef="servicetask2"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="servicetask2" targetRef="servicetask3"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="servicetask3" targetRef="end"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_my-process">
+    <bpmndi:BPMNPlane bpmnElement="my-process" id="BPMNPlane_my-process">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="35.0" width="35.0" x="40.0" y="214.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="35.0" width="35.0" x="550.0" y="214.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask1" id="BPMNShape_servicetask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="180.0" y="204.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask2" id="BPMNShape_servicetask2">
+        <omgdc:Bounds height="55.0" width="105.0" x="340.0" y="204.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="75.0" y="231.0"></omgdi:waypoint>
+        <omgdi:waypoint x="180.0" y="231.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="285.0" y="231.0"></omgdi:waypoint>
+        <omgdi:waypoint x="340.0" y="231.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="445.0" y="231.0"></omgdi:waypoint>
+        <omgdi:waypoint x="550.0" y="231.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
