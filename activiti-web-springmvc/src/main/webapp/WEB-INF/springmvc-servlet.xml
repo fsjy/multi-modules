@@ -21,7 +21,7 @@
     <context:component-scan base-package="org.com.bmsmart.rest.editor" />
     <context:component-scan base-package="org.com.bmsmart.rest.diagram" />
     -->
-    <!--<context:component-scan base-package="org.activiti.rest" />-->
+    <context:component-scan base-package="org.activiti.rest" />
 
 
 
