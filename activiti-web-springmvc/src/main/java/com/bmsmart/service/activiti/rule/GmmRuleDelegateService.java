@@ -4,6 +4,7 @@ import org.activiti.engine.delegate.BusinessRuleTaskDelegate;
 import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.impl.LocalBusinessRuleTaskDelegateImpl;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -11,7 +12,7 @@ import org.springframework.context.ApplicationContextAware;
 import java.util.function.Consumer;
 
 
-public class SelectRuleDelegateService extends LocalBusinessRuleTaskDelegateImpl {
+public class GmmRuleDelegateService extends LocalBusinessRuleTaskDelegateImpl {
 
 
     @Override

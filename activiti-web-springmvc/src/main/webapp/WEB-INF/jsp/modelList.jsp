@@ -42,29 +42,80 @@
 
     <script>
 
+        function _arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
         var myAPP = angular.module("myAPP", []);
+
+        //myApp.config(['$compileProvider', function($compileProvider) { $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|fil‌​e|ftp|blob):|data:im‌​age\//); } ]);
+
         var baseUrl = '${pageContext.request.contextPath}';
 
         var inputModels = {};
 
-
         myAPP.controller("myController", function ($scope, $http) {
 
 
-            $scope.Deploy = function (modelId) {
+
+            $scope.getImage = function (modelId) {
+
+                //var sentUrl = baseUrl + "/repository/models/"+ modelId +"/source-extra";
+                var sentUrl = baseUrl + "/model/image/"+ modelId;
+
+                //var sentUrl = baseUrl + "/repository/process-definitions/"+ modelId +"/image";
+                //var sentData = {modelId : ""};
+                //sentData.modelId = modelId;
+
+                $http({
+                    method: 'GET'
+                    , url: sentUrl
+                    , params: {}
+
+                }).then(function successCallback(response) {
+
+                    alert(response.data);
+                    //var str = _arrayBufferToBase64(response.data);
+                    //alert(response.data);
+
+                    //console.log(str);
+                    $scope.image = response.data;
+
+                }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    $scope.data = response.data || 'Request failed';
+                    $scope.status = response.status;
+
+                    //alert($scope.data);
+                    //alert($scope.status);
+                    alert("failed");
+                });
+
+
+            }
+
+
+            $scope.deploy = function (modelId) {
 
                 //alert(modelId);
 
                 var sentUrl = baseUrl + "/local/deploy"
 
-                var senddata = {modelId : ""};
+                var sentData = {modelId : ""};
 
-                senddata.modelId = modelId;
+                sentData.modelId = modelId;
 
                 $http({
                     method: 'POST'
                     , url: sentUrl
-                    , params: senddata
+                    , params: sentData
 
                 }).then(function successCallback(response) {
 
@@ -242,11 +293,22 @@
                        placeholder="Model ID">
             </div>
 
-            <button type="button" id="bth-activiti-deploy" class="btn btn-default" ng-click="Deploy(modelId)">
+            <button type="button" id="bth-activiti-deploy" class="btn btn-default" ng-click="deploy(modelId)">
                 Create Model
             </button>
-
+            <button type="button" id="bth-activiti-image" class="btn btn-default" ng-click="getImage(modelId)">
+                Get Image
+            </button>
         </form>
+
+
+
+
+        <img data-ng-src="data:image/png;base64,{{image}}">
+
+
+
+
 
         <h2>List</h2>
         <div class="row">

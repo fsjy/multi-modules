@@ -3,20 +3,28 @@ package com.bmsmart.controllers.local;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.activiti.editor.constants.ModelDataJsonConstants;
-import org.activiti.engine.ManagementService;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
+import org.activiti.engine.*;
 import org.activiti.engine.repository.Model;
+import org.activiti.engine.repository.ProcessDefinition;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.InputStream;
 
 @Controller
 @RequestMapping("/model")
@@ -90,5 +98,21 @@ public class ModuleController {
         } catch (Exception e) {
             logger.error("创建模型失败：", e);
         }
+    }
+
+
+    @RequestMapping(value="/image/{modelId}", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> getModelResource(@PathVariable String modelId) {
+
+
+        // ProcessDefinition processDefinition = getProcessDefinitionFromRequest(processDefinitionId);
+        //InputStream imageStream = repositoryService.getProcessDiagram(processDefinition.getId());
+
+        final HttpHeaders headers = new HttpHeaders();
+
+        byte[] editorSource = repositoryService.getModelEditorSourceExtra(modelId);
+        headers.setContentType(MediaType.IMAGE_PNG);
+        byte[] encodeBase64 = Base64.encodeBase64(editorSource);
+        return new ResponseEntity<>(encodeBase64, headers, HttpStatus.OK);
     }
 }

@@ -20,7 +20,7 @@
                           activiti:ruleVariablesInput="title,service1"
                           activiti:delegateExpression="${RuleDelegateService2}">
 
-        <!--activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService2"> -->
+        <!--activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateDicServicece"> -->
 
 
         </businessRuleTask>
