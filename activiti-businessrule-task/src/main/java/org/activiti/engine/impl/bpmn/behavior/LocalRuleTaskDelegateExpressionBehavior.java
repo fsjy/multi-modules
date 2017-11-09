@@ -37,7 +37,7 @@ public class LocalRuleTaskDelegateExpressionBehavior extends TaskActivityBehavio
         this.ruleVariableInputIdExpressions.add(expression);
     }
 
-    public void addRuleIdExpression (Expression expression) {
+    public void addRuleIdExpression(Expression expression) {
         this.ruleIdExpressions.add(expression);
     }
 
@@ -85,7 +85,7 @@ public class LocalRuleTaskDelegateExpressionBehavior extends TaskActivityBehavio
                 Context.getProcessEngineConfiguration()
                         .getDelegateInterceptor()
                         .handleInvocation(new RuleTaskDelegateInvocation(
-                                (BusinessRuleTaskDelegate) businessRuleTaskDelegate, execution));
+                                businessRuleTaskDelegate, execution));
 
             } else {
                 throw new ActivitiIllegalArgumentException("Delegate businessRuleTaskDelegate " + expression + "didn't resolve"
