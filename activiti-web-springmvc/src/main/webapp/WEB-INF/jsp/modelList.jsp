@@ -80,7 +80,7 @@
 
                 }).then(function successCallback(response) {
 
-                    alert(response.data);
+                    //alert(response.data);
                     //var str = _arrayBufferToBase64(response.data);
                     //alert(response.data);
 
