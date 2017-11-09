@@ -117,8 +117,14 @@
      此处加入bean定义是为了在非spring方式使用此Class的时候可以取得spring的内容
 
      -->
-    <bean id="RuleDelegateService1" class="com.bmsmart.service.activiti.rule.CrfRuleDelegateService"/>
-    <bean id="RuleDelegateService2" class="com.bmsmart.service.activiti.rule.DicRuleDelegateService"/>
+    <bean id="CrfRuleDelegateService" class="com.bmsmart.service.activiti.rule.CrfRuleDelegateService" scope="prototype"/>
+    <bean id="DicRuleDelegateService" class="com.bmsmart.service.activiti.rule.DicRuleDelegateService" scope="prototype"/>
+    <bean id="SelectRuleDelegateService" class="com.bmsmart.service.activiti.rule.SelectRuleDelegateService" scope="prototype"/>
+    <bean id="AnnRuleDelegateService" class="com.bmsmart.service.activiti.rule.AnnRuleDelegateService" scope="prototype"/>
+    <bean id="GpuRuleDelegateService" class="com.bmsmart.service.activiti.rule.GpuRuleDelegateService" scope="prototype"/>
+    <bean id="GmmRuleDelegateService" class="com.bmsmart.service.activiti.rule.GmmRuleDelegateService" scope="prototype"/>
+    <bean id="NbmRuleDelegateService" class="com.bmsmart.service.activiti.rule.NbmRuleDelegateService" scope="prototype"/>
+
 
 
 </beans>

@@ -10,6 +10,8 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +37,7 @@ public class deployController {
      * @return
      */
     @RequestMapping(value = "local/deploy", method = RequestMethod.POST)
-    public String executeRuleService(String modelId) throws IOException {
+    public ResponseEntity executeRuleService(String modelId) throws IOException {
 
 
         String id = modelId;
@@ -47,7 +49,14 @@ public class deployController {
 
         System.out.println(strOut);
 
-        strOut = strOut.replace("BusinessRule_TEST2", "BusinessRule").replace("BusinessRule_TEST", "BusinessRule");
+        strOut = strOut.replace("BusinessRule_BMS_SEL", "BusinessRule");
+
+        strOut = strOut.replace("BusinessRule_BMS_CRF", "BusinessRule");
+        strOut = strOut.replace("BusinessRule_BMS_GMM", "BusinessRule");
+        strOut = strOut.replace("BusinessRule_BMS_ANN", "BusinessRule");
+        strOut = strOut.replace("BusinessRule_BMS_DIC", "BusinessRule");
+        strOut = strOut.replace("BusinessRule_BMS_GPU", "BusinessRule");
+        strOut = strOut.replace("BusinessRule_BMS_NBM", "BusinessRule");
 
 
         ObjectNode modelNode = (ObjectNode) new ObjectMapper().readTree(strOut);
@@ -56,7 +65,9 @@ public class deployController {
 
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("自定义_BMS_", "");
 
-        return "modellist";
+        return new ResponseEntity<String>("a", HttpStatus.OK);
+
+        //return "modellist";
 
     }
 

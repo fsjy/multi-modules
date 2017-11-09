@@ -1,53 +1,24 @@
 package com.bmsmart.service.activiti.rule;
 
-import org.activiti.engine.delegate.BusinessRuleTaskDelegate;
-import org.activiti.engine.delegate.Expression;
+import org.activiti.engine.RepositoryService;
 import org.activiti.engine.impl.LocalBusinessRuleTaskDelegateImpl;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-
-import java.util.function.Consumer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class SelectRuleDelegateService extends LocalBusinessRuleTaskDelegateImpl {
 
+    @Autowired
+    private RepositoryService repositoryService;
 
+    private static final Logger log = LoggerFactory.getLogger(LocalBusinessRuleTaskDelegateImpl.class);
     @Override
     public void execute(ActivityExecution execution) throws Exception {
 
+        testLogging();
 
-
-
-        System.out.println("Instance of " + this.getClass().getSimpleName() + ":");
-        System.out.println("++++++++++++++++++++++++++++++++");
-        System.out.println(this.toString());
-        //System.out.println("++++++++++++++++++++++++++++++++");
-        System.out.println();
-
-        System.out.println("Input value is:");
-        System.out.println("--------------------------------");
-        //System.out.println(this.expression.toString());
-        getRuleVariableInputIdExpressions().forEach(new Consumer<Expression>() {
-            @Override
-            public void accept(Expression expression) {
-                System.out.println(expression.getExpressionText());
-            }
-        });
-
-        System.out.println("++++++++++++++++++++++++++++++++");
-        System.out.println();
-
-
-
-
-//        BasicDataSource dataSource = (BasicDataSource) ctx.getBean("dataSource");
-//
-//        System.out.println("Spring bean dataSource is:");
-//        System.out.println("++++++++++++++++++++++++++++++++");
-//        System.out.println(dataSource.toString());
-//        System.out.println("++++++++++++++++++++++++++++++++");
-//        System.out.println();
+        log.warn("Autowired Class of :  " + repositoryService.getClass().toString());
     }
 }

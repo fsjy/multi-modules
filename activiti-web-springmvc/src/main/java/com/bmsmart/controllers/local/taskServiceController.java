@@ -39,6 +39,8 @@ public class taskServiceController {
 
     private final static String RULE_ONE_BY_ONE_SERVICE_XML = "testxml/businessRuleTask-onebyone-activiti-class.bpmn20.xml";
 
+    private final static String TASK_XML = "testxml/javaTask.xml";
+
     /**
      * 测试使用在xml中使用UEL来传递参数的 TaskService运行入口
      * ignore "POST" and "GET"

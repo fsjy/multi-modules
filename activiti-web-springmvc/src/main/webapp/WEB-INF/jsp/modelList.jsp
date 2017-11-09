@@ -119,7 +119,8 @@
 
                 }).then(function successCallback(response) {
 
-                    $scope.models = response.data.data;
+                    //alert("OK");
+                    //$scope.models = response.data.data;
 
                 }, function errorCallback(response) {
                     // called asynchronously if an error occurs
@@ -127,8 +128,8 @@
                     $scope.data = response.data || 'Request failed';
                     $scope.status = response.status;
 
-                    //alert($scope.data);
-                    //alert($scope.status);
+                    alert($scope.data);
+                    alert($scope.status);
                     alert("failed");
                 });
 
@@ -294,7 +295,7 @@
             </div>
 
             <button type="button" id="bth-activiti-deploy" class="btn btn-default" ng-click="deploy(modelId)">
-                Create Model
+                Deploy
             </button>
             <button type="button" id="bth-activiti-image" class="btn btn-default" ng-click="getImage(modelId)">
                 Get Image

@@ -28,8 +28,9 @@ import javax.xml.stream.XMLStreamWriter;
  */
 public class LocalBusinessRuleTaskXMLConverter extends BaseBpmnXMLConverter {
 
+    // Bug Fixes 2017.11.9
     public Class<? extends BaseElement> getBpmnElementType() {
-        return BusinessRuleTask.class;
+        return LocalBusinessRuleTask.class;
     }
 
     @Override
@@ -64,23 +65,28 @@ public class LocalBusinessRuleTaskXMLConverter extends BaseBpmnXMLConverter {
 
     @Override
     protected void writeAdditionalAttributes(BaseElement element, BpmnModel model, XMLStreamWriter xtw) throws Exception {
-        BusinessRuleTask businessRuleTask = (BusinessRuleTask) element;
-        String inputVariables = convertToDelimitedString(businessRuleTask.getInputVariables());
+        LocalBusinessRuleTask localBusinessRuleTask = (LocalBusinessRuleTask) element;
+        String inputVariables = convertToDelimitedString(localBusinessRuleTask.getInputVariables());
         if (StringUtils.isNotEmpty(inputVariables)) {
             writeQualifiedAttribute(ATTRIBUTE_TASK_RULE_VARIABLES_INPUT, inputVariables, xtw);
         }
-        String ruleNames = convertToDelimitedString(businessRuleTask.getRuleNames());
+        String ruleNames = convertToDelimitedString(localBusinessRuleTask.getRuleNames());
         if (StringUtils.isNotEmpty(ruleNames)) {
             writeQualifiedAttribute(ATTRIBUTE_TASK_RULE_RULES, ruleNames, xtw);
         }
-        if (StringUtils.isNotEmpty(businessRuleTask.getResultVariableName())) {
-            writeQualifiedAttribute(ATTRIBUTE_TASK_RULE_RESULT_VARIABLE, businessRuleTask.getResultVariableName(), xtw);
+        if (StringUtils.isNotEmpty(localBusinessRuleTask.getResultVariableName())) {
+            writeQualifiedAttribute(ATTRIBUTE_TASK_RULE_RESULT_VARIABLE, localBusinessRuleTask.getResultVariableName(), xtw);
         }
-        if (StringUtils.isNotEmpty(businessRuleTask.getClassName())) {
-            writeQualifiedAttribute(ATTRIBUTE_TASK_RULE_CLASS, businessRuleTask.getClassName(), xtw);
+        if (StringUtils.isNotEmpty(localBusinessRuleTask.getClassName())) {
+            writeQualifiedAttribute(ATTRIBUTE_TASK_RULE_CLASS, localBusinessRuleTask.getClassName(), xtw);
         }
-        if (businessRuleTask.isExclude()) {
+        if (localBusinessRuleTask.isExclude()) {
             writeQualifiedAttribute(ATTRIBUTE_TASK_RULE_EXCLUDE, ATTRIBUTE_VALUE_TRUE, xtw);
+        }
+
+        // Bug fixes 2017.11.9 Yanglu
+        if (ImplementationType.IMPLEMENTATION_TYPE_DELEGATEEXPRESSION.equals(localBusinessRuleTask.getImplementationType())) {
+            writeQualifiedAttribute(ATTRIBUTE_TASK_SERVICE_DELEGATEEXPRESSION, localBusinessRuleTask.getImplementation(), xtw);
         }
     }
 

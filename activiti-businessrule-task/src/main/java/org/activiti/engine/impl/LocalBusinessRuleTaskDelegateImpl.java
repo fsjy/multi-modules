@@ -2,8 +2,12 @@ package org.activiti.engine.impl;
 
 import org.activiti.engine.delegate.BusinessRuleTaskDelegate;
 import org.activiti.engine.delegate.Expression;
+import org.activiti.engine.impl.bpmn.deployer.BpmnDeployer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
+import java.util.function.Consumer;
 
 
 /**
@@ -17,7 +21,7 @@ public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleT
     private HashSet<Expression> ruleIdExpressions = new HashSet<>();
     private boolean exclude;
     private String resultVariable;
-
+    private static final Logger log = LoggerFactory.getLogger(LocalBusinessRuleTaskDelegateImpl.class);
 
     public void setRuleVariableInputIdExpressions(HashSet<Expression>  expressions) {
         this.ruleVariableInputIdExpressions = expressions;
@@ -61,5 +65,25 @@ public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleT
 
     public boolean getExclude() {
         return this.exclude;
+    }
+
+    protected void testLogging() {
+        log.warn("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.warn("【"+this.getClass().getSimpleName() + "】:" + this.toString());
+        //System.out.println("Instance of " + this.getClass().getSimpleName() + ":");
+        //System.out.println("++++++++++++++++++++++++++++++++");
+        //System.out.println(this.toString());
+        //System.out.println("++++++++++++++++++++++++++++++++");
+        //System.out.println();
+        log.warn("【Input value is】: ");
+        //System.out.println(this.expression.toString());
+        getRuleVariableInputIdExpressions().forEach(new Consumer<Expression>() {
+            @Override
+            public void accept(Expression expression) {
+                log.warn(expression.getExpressionText());
+            }
+        });
+        log.warn("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println();
     }
 }

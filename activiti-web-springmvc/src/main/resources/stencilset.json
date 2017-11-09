@@ -124,7 +124,7 @@
         {
           "id": "name",
           "type": "String",
-          "title": "Name",
+          "title": "服务名称",
           "value": "选择服务",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
@@ -148,6 +148,20 @@
     },
     {
       "name": "documentationpackage",
+      "properties": [
+        {
+          "id": "documentation",
+          "type": "Text",
+          "title": "Documentation",
+          "value": "",
+          "description": "The descriptive name of the BPMN element.",
+          "popular": true
+        }
+      ]
+    },
+
+    {
+      "name": "documentationpackage_BMS_RULETASK",
       "properties": [
         {
           "id": "documentation",
@@ -211,6 +225,36 @@
         }
       ]
     },
+
+    {
+      "name": "BMS_TEST_INPUT",
+      "properties": [
+        {
+          "id": "test_input_content",
+          "type": "String",
+          "title": "测试输入内容",
+          "value": "TESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTEST",
+          "description": "TESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTESTTESTESTESTEST",
+          "popular": true
+        }
+      ]
+    },
+
+
+    {
+      "name": "asynchronousdefinitionpackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "asynchronousdefinition",
+          "type": "Boolean",
+          "title": "Asynchronous",
+          "value": "false",
+          "description": "Define the activity as asynchronous.",
+          "popular": false
+        }
+      ]
+    },
+
     {
       "name": "exclusivedefinitionpackage",
       "properties": [
@@ -225,6 +269,20 @@
       ]
     },
     {
+      "name": "exclusivedefinitionpackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "exclusivedefinition",
+          "type": "Boolean",
+          "title": "Exclusive",
+          "value": "false",
+          "description": "Define the activity as exclusive.",
+          "popular": false
+        }
+      ]
+    },
+
+    {
       "name": "executionlistenerspackage",
       "properties": [
         {
@@ -234,6 +292,34 @@
           "value": "",
           "description": "Listeners for an activity, process, sequence flow, start and end event.",
           "popular": true
+        }
+      ]
+    },
+
+    {
+      "name": "executionlistenerspackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "executionlisteners",
+          "type": "multiplecomplex",
+          "title": "Execution listeners",
+          "value": "",
+          "description": "Listeners for an activity, process, sequence flow, start and end event.",
+          "popular": false
+        }
+      ]
+    },
+
+    {
+      "name": "executionlistenerspackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "executionlisteners",
+          "type": "multiplecomplex",
+          "title": "Execution listeners",
+          "value": "",
+          "description": "Listeners for an activity, process, sequence flow, start and end event.",
+          "popular": false
         }
       ]
     },
@@ -341,6 +427,22 @@
         }
       ]
     },
+
+    {
+      "name": "servicetaskclasspackage_BMS_SEL",
+      "properties": [
+        {
+          "id": "servicetaskclass",
+          "type": "String",
+          "title": "Class",
+          "value": "com.bmsmart.service.activiti.java.SelectDelegateService",
+          "description": "Class that implements the service task logic.",
+          "popular": true
+        }
+      ]
+    },
+
+
     {
       "name": "servicetaskclasspackage_BMS_CRF",
       "properties": [
@@ -394,6 +496,33 @@
       ]
     },
 
+    {
+      "name": "servicetaskclasspackage_BMS_GMM",
+      "properties": [
+        {
+          "id": "servicetaskclass",
+          "type": "String",
+          "title": "Class",
+          "value": "com.bmsmart.service.activiti.java.GmmDelegateService",
+          "description": "Class that implements the service task logic.",
+          "popular": true
+        }
+      ]
+    },
+
+    {
+      "name": "servicetaskclasspackage_BMS_GPU",
+      "properties": [
+        {
+          "id": "servicetaskclass",
+          "type": "String",
+          "title": "Class",
+          "value": "com.bmsmart.service.activiti.java.GpuDelegateService",
+          "description": "Class that implements the service task logic.",
+          "popular": true
+        }
+      ]
+    },
     {
       "name": "servicetaskdelegateexpressionpackage_BMS_ANN",
       "properties": [
@@ -614,6 +743,20 @@
         }
       ]
     },
+
+    {
+      "name": "ruletask_rulespackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "ruletask_rules",
+          "type": "String",
+          "title": "Rules",
+          "value": "",
+          "description": "Rules of the rule task.",
+          "popular": false
+        }
+      ]
+    },
     {
       "name": "ruletask_variables_inputpackage",
       "properties": [
@@ -621,6 +764,19 @@
           "id": "ruletask_variables_input",
           "type": "String",
           "title": "Input variables",
+          "value": "",
+          "description": "Input variables of the rule task.",
+          "popular": true
+        }
+      ]
+    },
+    {
+      "name": "ruletask_variables_inputpackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "ruletask_variables_input",
+          "type": "String",
+          "title": "输入参数",
           "value": "",
           "description": "Input variables of the rule task.",
           "popular": true
@@ -641,6 +797,19 @@
       ]
     },
     {
+      "name": "ruletask_excludepackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "ruletask_exclude",
+          "type": "Boolean",
+          "title": "Exclude",
+          "value": "false",
+          "description": "Use the rules property as exclusion.",
+          "popular": false
+        }
+      ]
+    },
+    {
       "name": "ruletask_resultpackage",
       "properties": [
         {
@@ -650,6 +819,20 @@
           "value": "",
           "description": "Result variable of the rule task.",
           "popular": true
+        }
+      ]
+    },
+
+    {
+      "name": "ruletask_resultpackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "ruletask_result",
+          "type": "String",
+          "title": "Result variable",
+          "value": "",
+          "description": "Result variable of the rule task.",
+          "popular": false
         }
       ]
     },
@@ -1051,6 +1234,20 @@
       ]
     },
     {
+      "name": "multiinstance_typepackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "multiinstance_type",
+          "type": "kisbpm-multiinstance",
+          "title": "Multi-instance type",
+          "value": "None",
+          "description": "Repeated activity execution (parallel or sequential) can be displayed through different loop types",
+          "popular": false,
+          "refToView": "multiinstance"
+        }
+      ]
+    },
+    {
       "name": "multiinstance_cardinalitypackage",
       "properties": [
         {
@@ -1064,6 +1261,20 @@
       ]
     },
     {
+      "name": "multiinstance_cardinalitypackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "multiinstance_cardinality",
+          "type": "String",
+          "title": "Cardinality (Multi-instance)",
+          "value": "",
+          "description": "Define the cardinality of multi instance.",
+          "popular": false
+        }
+      ]
+    },
+
+    {
       "name": "multiinstance_collectionpackage",
       "properties": [
         {
@@ -1073,6 +1284,19 @@
           "value": "",
           "description": "Define the collection for the multi instance.",
           "popular": true
+        }
+      ]
+    },
+    {
+      "name": "multiinstance_collectionpackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "multiinstance_collection",
+          "type": "String",
+          "title": "Collection (Multi-instance)",
+          "value": "",
+          "description": "Define the collection for the multi instance.",
+          "popular": false
         }
       ]
     },
@@ -1090,6 +1314,19 @@
       ]
     },
     {
+      "name": "multiinstance_variablepackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "multiinstance_variable",
+          "type": "String",
+          "title": "Element variable (Multi-instance)",
+          "value": "",
+          "description": "Define the element variable for the multi instance.",
+          "popular": false
+        }
+      ]
+    },
+    {
       "name": "multiinstance_conditionpackage",
       "properties": [
         {
@@ -1103,6 +1340,19 @@
       ]
     },
     {
+      "name": "multiinstance_conditionpackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "multiinstance_condition",
+          "type": "String",
+          "title": "Completion condition (Multi-instance)",
+          "value": "",
+          "description": "Define the completion condition for the multi instance.",
+          "popular": false
+        }
+      ]
+    },
+    {
       "name": "isforcompensationpackage",
       "properties": [
         {
@@ -1112,6 +1362,20 @@
           "value": "false",
           "description": "A flag that identifies whether this activity is intended for the purposes of compensation.",
           "popular": true,
+          "refToView": "compensation"
+        }
+      ]
+    },
+    {
+      "name": "isforcompensationpackage_BMS_RULETASK",
+      "properties": [
+        {
+          "id": "isforcompensation",
+          "type": "Boolean",
+          "title": "Is for compensation",
+          "value": "false",
+          "description": "A flag that identifies whether this activity is intended for the purposes of compensation.",
+          "popular": false,
           "refToView": "compensation"
         }
       ]
@@ -1252,20 +1516,21 @@
         "overrideidpackage",
         "namepackage_BMS_SEL",
         "documentationpackage",
-        "asynchronousdefinitionpackage",
-        "exclusivedefinitionpackage",
-        "executionlistenerspackage",
-        "multiinstance_typepackage",
-        "multiinstance_cardinalitypackage",
-        "multiinstance_collectionpackage",
-        "multiinstance_variablepackage",
-        "multiinstance_conditionpackage",
-        "isforcompensationpackage",
-        "servicetaskclasspackage_BMS_RULE_TEST2",
-        "ruletask_rulespackage",
-        "ruletask_variables_inputpackage",
-        "ruletask_excludepackage",
-        "ruletask_resultpackage"
+        "asynchronousdefinitionpackage_BMS_RULETASK",
+        "exclusivedefinitionpackage_BMS_RULETASK",
+        "executionlistenerspackage_BMS_RULETASK",
+        "multiinstance_typepackage_BMS_RULETASK",
+        "multiinstance_cardinalitypackage_BMS_RULETASK",
+        "multiinstance_collectionpackage_BMS_RULETASK",
+        "multiinstance_variablepackage_BMS_RULETASK",
+        "multiinstance_conditionpackage_BMS_RULETASK",
+        "isforcompensationpackage_BMS_RULETASK",
+        "ruletask_rulespackage_BMS_RULETASK",
+        "ruletask_variables_inputpackage_BMS_RULETASK",
+        "servicetaskdelegateexpressionpackage_BMS_SEL",
+        "ruletask_excludepackage_BMS_RULETASK",
+        "ruletask_resultpackage_BMS_RULETASK",
+        "BMS_TEST_INPUT"
       ],
       "hiddenPropertyPackages": [],
       "roles": [
@@ -1290,20 +1555,20 @@
         "overrideidpackage",
         "namepackage_BMS_ANN",
         "documentationpackage",
-        "asynchronousdefinitionpackage",
-        "exclusivedefinitionpackage",
-        "executionlistenerspackage",
-        "multiinstance_typepackage",
-        "multiinstance_cardinalitypackage",
-        "multiinstance_collectionpackage",
-        "multiinstance_variablepackage",
-        "multiinstance_conditionpackage",
-        "isforcompensationpackage",
-        "servicetaskclasspackage_BMS_RULE_TEST",
-        "ruletask_rulespackage",
-        "ruletask_variables_inputpackage",
-        "ruletask_excludepackage",
-        "ruletask_resultpackage"
+        "asynchronousdefinitionpackage_BMS_RULETASK",
+        "exclusivedefinitionpackage_BMS_RULETASK",
+        "executionlistenerspackage_BMS_RULETASK",
+        "multiinstance_typepackage_BMS_RULETASK",
+        "multiinstance_cardinalitypackage_BMS_RULETASK",
+        "multiinstance_collectionpackage_BMS_RULETASK",
+        "multiinstance_variablepackage_BMS_RULETASK",
+        "multiinstance_conditionpackage_BMS_RULETASK",
+        "isforcompensationpackage_BMS_RULETASK",
+        "servicetaskdelegateexpressionpackage_BMS_ANN",
+        "ruletask_rulespackage_BMS_RULETASK",
+        "ruletask_variables_inputpackage_BMS_RULETASK",
+        "ruletask_excludepackage_BMS_RULETASK",
+        "ruletask_resultpackage_BMS_RULETASK"
       ],
       "hiddenPropertyPackages": [],
       "roles": [
@@ -1329,20 +1594,20 @@
         "overrideidpackage",
         "namepackage_BMS_CRF",
         "documentationpackage",
-        "asynchronousdefinitionpackage",
-        "exclusivedefinitionpackage",
-        "executionlistenerspackage",
-        "multiinstance_typepackage",
-        "multiinstance_cardinalitypackage",
-        "multiinstance_collectionpackage",
-        "multiinstance_variablepackage",
-        "multiinstance_conditionpackage",
-        "isforcompensationpackage",
-        "servicetaskclasspackage_BMS_RULE_TEST2",
-        "ruletask_rulespackage",
-        "ruletask_variables_inputpackage",
-        "ruletask_excludepackage",
-        "ruletask_resultpackage"
+        "asynchronousdefinitionpackage_BMS_RULETASK",
+        "exclusivedefinitionpackage_BMS_RULETASK",
+        "executionlistenerspackage_BMS_RULETASK",
+        "multiinstance_typepackage_BMS_RULETASK",
+        "multiinstance_cardinalitypackage_BMS_RULETASK",
+        "multiinstance_collectionpackage_BMS_RULETASK",
+        "multiinstance_variablepackage_BMS_RULETASK",
+        "multiinstance_conditionpackage_BMS_RULETASK",
+        "isforcompensationpackage_BMS_RULETASK",
+        "servicetaskdelegateexpressionpackage_BMS_CRF",
+        "ruletask_rulespackage_BMS_RULETASK",
+        "ruletask_variables_inputpackage_BMS_RULETASK",
+        "ruletask_excludepackage_BMS_RULETASK",
+        "ruletask_resultpackage_BMS_RULETASK"
       ],
       "hiddenPropertyPackages": [],
       "roles": [
@@ -1368,20 +1633,20 @@
         "overrideidpackage",
         "namepackage_BMS_DIC",
         "documentationpackage",
-        "asynchronousdefinitionpackage",
-        "exclusivedefinitionpackage",
-        "executionlistenerspackage",
-        "multiinstance_typepackage",
-        "multiinstance_cardinalitypackage",
-        "multiinstance_collectionpackage",
-        "multiinstance_variablepackage",
-        "multiinstance_conditionpackage",
-        "isforcompensationpackage",
-        "servicetaskclasspackage_BMS_RULE_TEST2",
-        "ruletask_rulespackage",
-        "ruletask_variables_inputpackage",
-        "ruletask_excludepackage",
-        "ruletask_resultpackage"
+        "asynchronousdefinitionpackage_BMS_RULETASK",
+        "exclusivedefinitionpackage_BMS_RULETASK",
+        "executionlistenerspackage_BMS_RULETASK",
+        "multiinstance_typepackage_BMS_RULETASK",
+        "multiinstance_cardinalitypackage_BMS_RULETASK",
+        "multiinstance_collectionpackage_BMS_RULETASK",
+        "multiinstance_variablepackage_BMS_RULETASK",
+        "multiinstance_conditionpackage_BMS_RULETASK",
+        "isforcompensationpackage_BMS_RULETASK",
+        "servicetaskdelegateexpressionpackage_BMS_DIC",
+        "ruletask_rulespackage_BMS_RULETASK",
+        "ruletask_variables_inputpackage_BMS_RULETASK",
+        "ruletask_excludepackage_BMS_RULETASK",
+        "ruletask_resultpackage_BMS_RULETASK"
       ],
       "hiddenPropertyPackages": [],
       "roles": [
@@ -1406,20 +1671,20 @@
         "overrideidpackage",
         "namepackage_BMS_GMM",
         "documentationpackage",
-        "asynchronousdefinitionpackage",
-        "exclusivedefinitionpackage",
-        "executionlistenerspackage",
-        "multiinstance_typepackage",
-        "multiinstance_cardinalitypackage",
-        "multiinstance_collectionpackage",
-        "multiinstance_variablepackage",
-        "multiinstance_conditionpackage",
-        "isforcompensationpackage",
-        "servicetaskclasspackage_BMS_RULE_TEST2",
-        "ruletask_rulespackage",
-        "ruletask_variables_inputpackage",
-        "ruletask_excludepackage",
-        "ruletask_resultpackage"
+        "asynchronousdefinitionpackage_BMS_RULETASK",
+        "exclusivedefinitionpackage_BMS_RULETASK",
+        "executionlistenerspackage_BMS_RULETASK",
+        "multiinstance_typepackage_BMS_RULETASK",
+        "multiinstance_cardinalitypackage_BMS_RULETASK",
+        "multiinstance_collectionpackage_BMS_RULETASK",
+        "multiinstance_variablepackage_BMS_RULETASK",
+        "multiinstance_conditionpackage_BMS_RULETASK",
+        "isforcompensationpackage_BMS_RULETASK",
+        "servicetaskdelegateexpressionpackage_BMS_GMM",
+        "ruletask_rulespackage_BMS_RULETASK",
+        "ruletask_variables_inputpackage_BMS_RULETASK",
+        "ruletask_excludepackage_BMS_RULETASK",
+        "ruletask_resultpackage_BMS_RULETASK"
       ],
       "hiddenPropertyPackages": [],
       "roles": [
@@ -1444,20 +1709,20 @@
         "overrideidpackage",
         "namepackage_BMS_GPU",
         "documentationpackage",
-        "asynchronousdefinitionpackage",
-        "exclusivedefinitionpackage",
-        "executionlistenerspackage",
-        "multiinstance_typepackage",
-        "multiinstance_cardinalitypackage",
-        "multiinstance_collectionpackage",
-        "multiinstance_variablepackage",
-        "multiinstance_conditionpackage",
-        "isforcompensationpackage",
-        "servicetaskclasspackage_BMS_RULE_TEST2",
-        "ruletask_rulespackage",
-        "ruletask_variables_inputpackage",
-        "ruletask_excludepackage",
-        "ruletask_resultpackage"
+        "asynchronousdefinitionpackage_BMS_RULETASK",
+        "exclusivedefinitionpackage_BMS_RULETASK",
+        "executionlistenerspackage_BMS_RULETASK",
+        "multiinstance_typepackage_BMS_RULETASK",
+        "multiinstance_cardinalitypackage_BMS_RULETASK",
+        "multiinstance_collectionpackage_BMS_RULETASK",
+        "multiinstance_variablepackage_BMS_RULETASK",
+        "multiinstance_conditionpackage_BMS_RULETASK",
+        "isforcompensationpackage_BMS_RULETASK",
+        "servicetaskdelegateexpressionpackage_BMS_GPU",
+        "ruletask_rulespackage_BMS_RULETASK",
+        "ruletask_variables_inputpackage_BMS_RULETASK",
+        "ruletask_excludepackage_BMS_RULETASK",
+        "ruletask_resultpackage_BMS_RULETASK"
       ],
       "hiddenPropertyPackages": [],
       "roles": [
@@ -1482,20 +1747,20 @@
         "overrideidpackage",
         "namepackage_BMS_NBM",
         "documentationpackage",
-        "asynchronousdefinitionpackage",
-        "exclusivedefinitionpackage",
-        "executionlistenerspackage",
-        "multiinstance_typepackage",
-        "multiinstance_cardinalitypackage",
-        "multiinstance_collectionpackage",
-        "multiinstance_variablepackage",
-        "multiinstance_conditionpackage",
-        "isforcompensationpackage",
-        "servicetaskclasspackage_BMS_RULE_TEST2",
-        "ruletask_rulespackage",
-        "ruletask_variables_inputpackage",
-        "ruletask_excludepackage",
-        "ruletask_resultpackage"
+        "asynchronousdefinitionpackage_BMS_RULETASK",
+        "exclusivedefinitionpackage_BMS_RULETASK",
+        "executionlistenerspackage_BMS_RULETASK",
+        "multiinstance_typepackage_BMS_RULETASK",
+        "multiinstance_cardinalitypackage_BMS_RULETASK",
+        "multiinstance_collectionpackage_BMS_RULETASK",
+        "multiinstance_variablepackage_BMS_RULETASK",
+        "multiinstance_conditionpackage_BMS_RULETASK",
+        "isforcompensationpackage_BMS_RULETASK",
+        "servicetaskdelegateexpressionpackage_BMS_NBM",
+        "ruletask_rulespackage_BMS_RULETASK",
+        "ruletask_variables_inputpackage_BMS_RULETASK",
+        "ruletask_excludepackage_BMS_RULETASK",
+        "ruletask_resultpackage_BMS_RULETASK"
       ],
       "hiddenPropertyPackages": [],
       "roles": [
