@@ -19,6 +19,11 @@ public class SelectRuleDelegateService extends LocalBusinessRuleTaskDelegateImpl
 
         testLogging();
 
-        log.warn("Autowired Class of :  " + repositoryService.getClass().toString());
+
+
+
+
+
+
     }
 }

@@ -8,6 +8,8 @@
 <%@page session="false" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -61,6 +63,32 @@
         var inputModels = {};
 
         myAPP.controller("myController", function ($scope, $http) {
+
+
+            $scope.modifyModel = function (modelID_) {
+
+                alert(modelID_);
+                var sentUrl = baseUrl + "/repository/models/" + modelID_;
+                var params_ = {modelId: modelID_}
+
+                $http({
+                    method: 'GET'
+                    , url: sentUrl
+                    , params: {}
+
+                }).then(function successCallback(response) {
+
+                    window.location.href = baseUrl + "/modeler.html?modelId=" + modelID_;
+
+                }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    //$scope.data = response.data || 'Request failed';
+                    //$scope.status = response.status;
+                    alert("No model ID");
+                });
+
+            };
 
 
 
@@ -140,7 +168,7 @@
 
             $scope.createModel = function () {
 
-                window.open(baseUrl + "/model/create?name=" + $scope.inputModels.nameLike + "&key=" + $scope.inputModels.key + "&description=" + $scope.inputModels.description + "");
+                window.open(baseUrl + "/model/create?name=" + $scope.inputModels_create.nameLike + "&key=" + $scope.inputModels_create.key + "&description=" + $scope.inputModels_create.description + "");
 
             };
 
@@ -248,6 +276,9 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Local Model Procedure Page</a>
             </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Hello <shiro:principal/></a>
+            </div>
         </div>
     </nav>
 
@@ -260,7 +291,7 @@
 
     <div ng-app="myAPP" ng-controller="myController">
 
-        <h2>Operate</h2>
+        <h3>Search</h3>
         <form class="form-inline">
             <div class="form-group">
 
@@ -276,9 +307,25 @@
             <button type="button" id="bth-activiti" class="btn btn-default" ng-click="SendData('/repository/models')">
                 Search Model
             </button>
+
+        </form>
+
+        <h3>Create</h3>
+        <form class="form-inline">
+
             <div class="form-group">
 
-                <input type="text" class="form-control" id="model_description" ng-model="inputModels.description"
+                <input type="text" class="form-control" id="model_name_create" ng-model="inputModels_create.nameLike"
+                       placeholder="Model Name">
+            </div>
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="model_key_create" ng-model="inputModels_create.key"
+                       placeholder="Model Key">
+            </div>
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="model_description" ng-model="inputModels_create.description"
                        placeholder="Model Description">
             </div>
 
@@ -287,11 +334,43 @@
             </button>
         </form>
 
+        <h3>Modify</h3>
+        <form class="form-inline">
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="model_name_modify" ng-model="modifyModelID"
+                       placeholder="Model Name">
+            </div>
+
+            <button type="button" id="bth-activiti-modify" class="btn btn-default" ng-click="modifyModel(modifyModelID)">
+                Modify Model
+            </button>
+        </form>
+
+
+
+        <h3>Deploy</h3>
         <form class="form-inline">
             <div class="form-group">
 
                 <input type="text" class="form-control" id="model_id" ng-model="modelId"
+
                        placeholder="Model ID">
+            </div>
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="model_title" ng-model="modelTitle"
+
+                       placeholder="Model Title">
+            </div>
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="model_content" ng-model="modelContent"
+
+                       placeholder="Model Content">
             </div>
 
             <button type="button" id="bth-activiti-deploy" class="btn btn-default" ng-click="deploy(modelId)">
@@ -311,7 +390,7 @@
 
 
 
-        <h2>List</h2>
+        <h3>List</h3>
         <div class="row">
 
             <div class="table-responsive">

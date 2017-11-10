@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class deployController {
@@ -37,7 +39,7 @@ public class deployController {
      * @return
      */
     @RequestMapping(value = "local/deploy", method = RequestMethod.POST)
-    public ResponseEntity executeRuleService(String modelId) throws IOException {
+    public ResponseEntity executeRuleService(String modelId, String title, String content) throws IOException {
 
 
         String id = modelId;
@@ -63,7 +65,16 @@ public class deployController {
 
         deployModelerModel(modelNode);
 
-        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("自定义_BMS_", "");
+
+        Map<String, Object> variablesMaps = new HashMap<>();
+
+
+
+
+        variablesMaps.put("title", "这是一个悲惨的故事");
+        variablesMaps.put("content", "每天上班8个小时难道不够悲惨么？");
+
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("自定义_BMS_", variablesMaps);
 
         return new ResponseEntity<String>("a", HttpStatus.OK);
 

@@ -127,4 +127,9 @@
 
 
 
+    <!-- Test for Calculate Service -->
+    <bean id="itmsCalculateServiceAnn" class="com.bmsmart.service.local.impl.ItmsCalculateServiceAnnImpl"/>
+
+
+
 </beans>
