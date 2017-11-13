@@ -24,8 +24,9 @@
             <value>
                 # some example chain definitions:
                 /login/** = anon
-                /admin/** = authc, roles[admin]
-                /docs/** = authc, perms[document:read]
+                /model/** = authc, roles[admin]
+
+                #/local/** = authc, perms[document:read]
 
                 # more URL-to-FilterChain definitions here
                 ######################################################################################################
@@ -45,6 +46,7 @@
     <!-- They will automatically be acquired by the 'shiroFilter' bean above and made available -->
     <!-- to the 'filterChainDefinitions' property.  Or you can manually/explicitly add them     -->
     <!-- to the shiroFilter's 'filters' Map if desired. See its JavaDoc for more details.       -->
+    <!-- 这里可以声明客户端的Filter，作为filterChainDefinitions参数-->
     <!--
     <bean id="someFilter" class="..."/>
     <bean id="anotherFilter" class="...">
@@ -55,7 +57,14 @@
 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
-        <property name="realm" ref="myRealm"/>
+
+        <property name="realms">
+            <set>
+                <ref bean="identifyRealm"/>
+                <ref bean="loginRealm"/>
+            </set>
+        </property>
+
         <!-- By default the servlet container sessions will be used.  Uncomment this line
              to use shiro's native sessions (see the JavaDoc for more): -->
         <!-- <property name="sessionMode" value="native"/> -->
@@ -65,6 +74,7 @@
     <!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
     <!-- security datasource: -->
 
-    <bean id="myRealm" class="com.bmsmart.security.shiro.realm.IdentifyRealmImpl"/>
+    <bean id="identifyRealm" class="com.bmsmart.security.shiro.realm.IdentifyRealmImpl"/>
+    <bean id="loginRealm" class="com.bmsmart.security.shiro.realm.LoginRealmImpl"/>
 
 </beans>

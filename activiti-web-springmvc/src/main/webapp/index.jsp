@@ -68,7 +68,7 @@
 
                         //console.log(str);
                         //$scope.image = response.data;
-                        alert("success")
+                        //alert("success")
                         //alert(response.statusCode);
 
                         //$location.path('/local/modelList').replace();
@@ -86,7 +86,7 @@
 
                         //alert($scope.data);
                         //alert($scope.status);
-                        alert(response.statusCode);
+                        //alert(response.statusCode);
                         alert("failed");
                     });
 
