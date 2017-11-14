@@ -27,8 +27,10 @@
     <context:component-scan base-package="org.activiti.rest" />
 
     <!-- AspectJ -->
-    <aop:aspectj-autoproxy />
-    <bean name="AspectCalculateParamsService" class="com.bmsmart.service.aop.aspect.impl.AspectCalculateParamsServiceImpl"/>
+    <!-- 强制spring使用CGLIB方式进行AOP拦截 保证无interface的class也可以被拦截成功 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <bean name="AspectCalculateParamsService" class="com.bmsmart.aop.aspect.impl.AspectCalculateParamsPointcutImpl"/>
+    <bean name="AspectCalculateModelSaveService" class="com.bmsmart.aop.aspect.impl.AspectModelSavePointcutImpl"/>
 
 
 

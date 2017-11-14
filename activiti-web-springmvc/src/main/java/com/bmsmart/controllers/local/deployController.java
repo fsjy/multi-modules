@@ -1,5 +1,6 @@
 package com.bmsmart.controllers.local;
 
+import com.bmsmart.constant.CONST;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.activiti.bpmn.converter.BpmnXMLConverter;
@@ -8,6 +9,8 @@ import org.activiti.editor.language.json.converter.BpmnJsonConverter;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.Deployment;
+import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,16 +69,20 @@ public class deployController {
 
         deployModelerModel(modelNode);
 
-
         Map<String, Object> variablesMaps = new HashMap<>();
 
 
-        variablesMaps.put("title", "这是一个悲惨的故事");
-        variablesMaps.put("content", "每天上班8个小时难道不够悲惨么？");
+        variablesMaps.put(CONST.ACT_TITLE, "这是一个悲惨的故事");
+        variablesMaps.put(CONST.ACT_CONTENT, "每天上班8个小时难道不够悲惨么？");
 
-        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("自定义_BMS_", variablesMaps);
+        ProcessDefinitionQuery processDefinition = repositoryService.createProcessDefinitionQuery();
 
-        Map<String, Object> vars = processInstance.getProcessVariables();
+        String key = modelNode.get("properties").get("process_id").asText();
+
+        ProcessInstance processInstanceBykey = runtimeService.startProcessInstanceByKey(key, variablesMaps);
+        //ProcessInstance processInstanceByDefindedID = runtimeService.startProcessInstanceById(definedId, variablesMaps);
+
+        Map<String, Object> vars = processInstanceBykey.getProcessVariables();
 
 
         System.out.println("Instance variables:");
@@ -86,14 +93,14 @@ public class deployController {
             /**
              * Performs this operation on the given arguments.
              *
-             * @param s the first input argument
-             * @param o the second input argument
+             * @param k the first input argument
+             * @param v the second input argument
              */
             @Override
-            public void accept(String s, Object o) {
+            public void accept(String k, Object v) {
 
-                System.out.println("key: " + s.toString());
-                System.out.println("value: " + o.toString());
+                System.out.println("key: " + k.toString());
+                System.out.println("value: " + v.toString());
 
             }
 
@@ -107,7 +114,7 @@ public class deployController {
 
     }
 
-    protected void deployModelerModel(final ObjectNode modelNode) {
+    protected String deployModelerModel(final ObjectNode modelNode) {
         BpmnModel model = new BpmnJsonConverter().convertToBpmnModel(modelNode);
         byte[] bpmnBytes = new BpmnXMLConverter().convertToXML(model);
 
@@ -118,6 +125,10 @@ public class deployController {
                 .deploy();
 
         //ExplorerApp.get().getViewManager().showDeploymentPage(deployment.getId());
+
+
+        return deployment.getId();
     }
+
 
 }
