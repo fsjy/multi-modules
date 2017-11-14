@@ -8,11 +8,11 @@ public class ItmsCalculateServiceAnnImpl implements ItmsCalculateService<Object,
     @Override
     public Object execute() {
 
+
+
+
+
         return new Object();
     }
 
-    @Override
-    public Object execute2() {
-        return null;
-    }
 }

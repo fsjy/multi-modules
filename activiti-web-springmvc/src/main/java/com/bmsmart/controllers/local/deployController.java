@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 @Controller
 public class deployController {
@@ -69,12 +70,36 @@ public class deployController {
         Map<String, Object> variablesMaps = new HashMap<>();
 
 
-
-
         variablesMaps.put("title", "这是一个悲惨的故事");
         variablesMaps.put("content", "每天上班8个小时难道不够悲惨么？");
 
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("自定义_BMS_", variablesMaps);
+
+        Map<String, Object> vars = processInstance.getProcessVariables();
+
+
+        System.out.println("Instance variables:");
+        System.out.println("-------------------------------------------------------");
+        int count = 1;
+        vars.forEach(new BiConsumer<String, Object>() {
+
+            /**
+             * Performs this operation on the given arguments.
+             *
+             * @param s the first input argument
+             * @param o the second input argument
+             */
+            @Override
+            public void accept(String s, Object o) {
+
+                System.out.println("key: " + s.toString());
+                System.out.println("value: " + o.toString());
+
+            }
+
+        });
+
+        System.out.println("-------------------------------------------------------");
 
         return new ResponseEntity<String>("a", HttpStatus.OK);
 

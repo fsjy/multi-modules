@@ -1,5 +1,6 @@
 package org.activiti.engine.impl;
 
+import org.activiti.engine.LocalBusinessRuleTaskDelegate;
 import org.activiti.engine.delegate.BusinessRuleTaskDelegate;
 import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.impl.bpmn.deployer.BpmnDeployer;
@@ -15,7 +16,7 @@ import java.util.function.Consumer;
  *
  * @author Yanglu
  */
-public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleTaskDelegate {
+public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleTaskDelegate, LocalBusinessRuleTaskDelegate {
 
     private HashSet<Expression> ruleVariableInputIdExpressions = new HashSet<>();
     private HashSet<Expression> ruleIdExpressions = new HashSet<>();
@@ -23,7 +24,7 @@ public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleT
     private String resultVariable;
     private static final Logger log = LoggerFactory.getLogger(LocalBusinessRuleTaskDelegateImpl.class);
 
-    public void setRuleVariableInputIdExpressions(HashSet<Expression>  expressions) {
+    public void setRuleVariableInputIdExpressions(HashSet<Expression> expressions) {
         this.ruleVariableInputIdExpressions = expressions;
     }
 
@@ -69,7 +70,7 @@ public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleT
 
     protected void testLogging() {
         log.warn("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.warn("【"+this.getClass().getSimpleName() + "】:" + this.toString());
+        log.warn("【" + this.getClass().getSimpleName() + "】:" + this.toString());
         //System.out.println("Instance of " + this.getClass().getSimpleName() + ":");
         //System.out.println("++++++++++++++++++++++++++++++++");
         //System.out.println(this.toString());

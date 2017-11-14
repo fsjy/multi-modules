@@ -1,5 +1,6 @@
 package org.activiti.engine.impl.bpmn.behavior;
 
+import org.activiti.engine.LocalBusinessRuleTaskDelegate;
 import org.activiti.engine.impl.LocalBusinessRuleTaskDelegateImpl;
 import org.activiti.engine.impl.delegate.RuleTaskDelegateInvocation;
 import org.activiti.engine.ActivitiIllegalArgumentException;
@@ -74,8 +75,8 @@ public class LocalRuleTaskDelegateExpressionBehavior extends TaskActivityBehavio
 
                 businessRuleTaskDelegate = (BusinessRuleTaskDelegate) delegate;
 
-                ((LocalBusinessRuleTaskDelegateImpl) businessRuleTaskDelegate).setRuleIdExpressions(this.ruleIdExpressions);
-                ((LocalBusinessRuleTaskDelegateImpl) businessRuleTaskDelegate).setRuleVariableInputIdExpressions(this.ruleVariableInputIdExpressions);
+                ((LocalBusinessRuleTaskDelegate) businessRuleTaskDelegate).setRuleIdExpressions(this.ruleIdExpressions);
+                ((LocalBusinessRuleTaskDelegate) businessRuleTaskDelegate).setRuleVariableInputIdExpressions(this.ruleVariableInputIdExpressions);
 
 
                 // Bug fixes Modified by Yanglu 在businessRuleTaskDelegate初始化后设置相应xml中定义的输入输出参数
