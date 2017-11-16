@@ -7,7 +7,9 @@ import org.activiti.engine.impl.bpmn.deployer.BpmnDeployer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.function.Consumer;
 
 
@@ -18,25 +20,25 @@ import java.util.function.Consumer;
  */
 public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleTaskDelegate, LocalBusinessRuleTaskDelegate {
 
-    private HashSet<Expression> ruleVariableInputIdExpressions = new HashSet<>();
-    private HashSet<Expression> ruleIdExpressions = new HashSet<>();
+    private List<Expression> ruleVariableInputIdExpressions = new ArrayList<>();
+    private List<Expression> ruleIdExpressions = new ArrayList<>();
     private boolean exclude;
     private String resultVariable;
 
 
-    public void setRuleVariableInputIdExpressions(HashSet<Expression> expressions) {
+    public void setRuleVariableInputIdExpressions(List<Expression> expressions) {
         this.ruleVariableInputIdExpressions = expressions;
     }
 
-    public void setRuleIdExpressions(HashSet<Expression> ruleIdExpressions) {
+    public void setRuleIdExpressions(List<Expression> ruleIdExpressions) {
         this.ruleIdExpressions = ruleIdExpressions;
     }
 
-    protected HashSet<Expression> getRuleVariableInputIdExpressions() {
+    protected List<Expression> getRuleVariableInputIdExpressions() {
         return this.ruleVariableInputIdExpressions;
     }
 
-    protected HashSet<Expression> getRuleIdExpressions() {
+    protected List<Expression> getRuleIdExpressions() {
         return this.ruleIdExpressions;
     }
 

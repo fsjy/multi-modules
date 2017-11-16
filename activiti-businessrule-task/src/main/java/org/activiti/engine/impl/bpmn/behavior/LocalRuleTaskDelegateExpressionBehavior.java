@@ -13,7 +13,9 @@ import org.activiti.engine.impl.context.Context;
 import org.activiti.engine.impl.pvm.delegate.ActivityBehavior;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Add by Yanglu 2017.11.5
@@ -28,8 +30,8 @@ public class LocalRuleTaskDelegateExpressionBehavior extends TaskActivityBehavio
     protected Expression expression;
 
 
-    private HashSet<Expression> ruleVariableInputIdExpressions = new HashSet<>();
-    private HashSet<Expression> ruleIdExpressions = new HashSet<>();
+    private List<Expression> ruleVariableInputIdExpressions = new ArrayList<>();
+    private List<Expression> ruleIdExpressions = new ArrayList<>();
     protected String resultVariableName;
     protected boolean exclude;
 

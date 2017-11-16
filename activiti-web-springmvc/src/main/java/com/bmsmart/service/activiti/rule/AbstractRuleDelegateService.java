@@ -57,7 +57,7 @@ public abstract class AbstractRuleDelegateService extends LocalBusinessRuleTaskD
 
     }
 
-    private ActivitiInputParams convertParams(HashSet<Expression> expressions) {
+    private ActivitiInputParams convertParams(List<Expression> expressions) {
 
         ActivitiInputParams params = new ActivitiInputParams();
         List<String> list = new ArrayList<>();

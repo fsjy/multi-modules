@@ -3,11 +3,12 @@ package org.activiti.engine;
 import org.activiti.engine.delegate.Expression;
 
 import java.util.HashSet;
+import java.util.List;
 
 public interface LocalBusinessRuleTaskDelegate {
 
-    void setRuleVariableInputIdExpressions(HashSet<Expression> expressions);
+    void setRuleVariableInputIdExpressions(List<Expression> expressions);
 
-    void setRuleIdExpressions(HashSet<Expression> ruleIdExpressions);
+    void setRuleIdExpressions(List<Expression> ruleIdExpressions);
 
 }
