@@ -74,7 +74,7 @@
     <!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
     <!-- security datasource: -->
 
-    <bean id="identifyRealm" class="com.bmsmart.security.shiro.realm.IdentifyRealmImpl"/>
-    <bean id="loginRealm" class="com.bmsmart.security.shiro.realm.LoginRealmImpl"/>
+    <bean id="identifyRealm" class="org.apache.shiro.realm.IdentifyRealmImpl"/>
+    <bean id="loginRealm" class="org.apache.shiro.realm.LoginRealmImpl"/>
 
 </beans>

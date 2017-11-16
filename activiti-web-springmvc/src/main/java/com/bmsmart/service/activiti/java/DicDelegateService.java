@@ -7,6 +7,7 @@ import org.activiti.engine.delegate.JavaDelegate;
  * 字典模型服务
  * Add by Yanglu 2017.10.26
  */
+@Deprecated
 public class DicDelegateService extends DelegateService implements JavaDelegate {
 
 

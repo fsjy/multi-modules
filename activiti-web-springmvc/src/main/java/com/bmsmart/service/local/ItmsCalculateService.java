@@ -1,7 +1,9 @@
 package com.bmsmart.service.local;
 
-public interface ItmsCalculateService<T1,T2> {
+import com.bmsmart.service.activiti.rule.entity.ServiceInputParams;
 
-    T1 execute();
+public interface ItmsCalculateService<T1> {
+
+    T1 execute(ServiceInputParams params);
 
 }

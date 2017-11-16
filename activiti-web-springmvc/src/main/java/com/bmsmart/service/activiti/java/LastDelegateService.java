@@ -7,6 +7,7 @@ import org.activiti.engine.delegate.JavaDelegate;
  * 做最后一个总处理的Service
  * Add by Yanglu 2017.10.31
  */
+@Deprecated
 public class LastDelegateService extends DelegateService implements JavaDelegate {
 
     /**

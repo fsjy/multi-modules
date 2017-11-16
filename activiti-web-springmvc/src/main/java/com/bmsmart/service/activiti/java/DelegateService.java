@@ -4,6 +4,7 @@ package com.bmsmart.service.activiti.java;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.runtime.Execution;
 
+@Deprecated
 public class DelegateService {
 
     private String getServiceName() {

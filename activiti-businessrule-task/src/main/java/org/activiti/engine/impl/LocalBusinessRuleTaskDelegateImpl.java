@@ -22,7 +22,7 @@ public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleT
     private HashSet<Expression> ruleIdExpressions = new HashSet<>();
     private boolean exclude;
     private String resultVariable;
-    private static final Logger log = LoggerFactory.getLogger(LocalBusinessRuleTaskDelegateImpl.class);
+
 
     public void setRuleVariableInputIdExpressions(HashSet<Expression> expressions) {
         this.ruleVariableInputIdExpressions = expressions;
@@ -68,23 +68,4 @@ public abstract class LocalBusinessRuleTaskDelegateImpl implements BusinessRuleT
         return this.exclude;
     }
 
-    protected void testLogging() {
-        log.warn("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.warn("【" + this.getClass().getSimpleName() + "】:" + this.toString());
-        //System.out.println("Instance of " + this.getClass().getSimpleName() + ":");
-        //System.out.println("++++++++++++++++++++++++++++++++");
-        //System.out.println(this.toString());
-        //System.out.println("++++++++++++++++++++++++++++++++");
-        //System.out.println();
-        log.warn("【Input value is】: ");
-        //System.out.println(this.expression.toString());
-        getRuleVariableInputIdExpressions().forEach(new Consumer<Expression>() {
-            @Override
-            public void accept(Expression expression) {
-                log.warn(expression.getExpressionText());
-            }
-        });
-        log.warn("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println();
-    }
 }

@@ -18,7 +18,7 @@ public class AspectCalculateParamsPointcutImpl implements AspectCalculatePointcu
 
     private static final Logger log = LoggerFactory.getLogger(AspectCalculateParamsPointcutImpl.class);
 
-    @Before("execution(* com.bmsmart.service.activiti.rule.*RuleDelegateService.execute(..))")
+    @Before("execution(* com.bmsmart.service.activiti.rule.RuleDelegate*.execute(..))")
     public void setParamsBefore(JoinPoint joinPoint) {
 
         System.out.println("++++++++++Before++++++++++++");
@@ -45,17 +45,17 @@ public class AspectCalculateParamsPointcutImpl implements AspectCalculatePointcu
 
         });
 
-        System.out.println("AOP AspectJ jet");
+        System.out.println("Before AOP AspectJ jet");
         System.out.println("++++++++++Before++++++++++++");
 
     }
 
-    @After("execution(* com.bmsmart.service.activiti.rule.*RuleDelegateService.execute(..))")
+    @After("execution(* com.bmsmart.service.activiti.rule.RuleDelegate*.execute(..))")
     public void setParamsAfter(JoinPoint joinPoint) {
 
 
         System.out.println("++++++++++After++++++++++++");
-        System.out.println("AOP AspectJ jet");
+        System.out.println("After AOP AspectJ jet");
         System.out.println("++++++++++After++++++++++++");
 
     }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 朴素贝叶斯训练模型服务
  * Add by Yanglu 2017.10.26
  */
+@Deprecated
 public class NbmDelegateService extends DelegateService implements JavaDelegate {
 
 

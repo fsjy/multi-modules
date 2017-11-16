@@ -31,6 +31,11 @@
         <property name="databaseSchemaUpdate" value="false"/>
         <property name="jobExecutorActivate" value="false"/>
         <property name="activityBehaviorFactory" ref="localActivityBehaviorFactory"/>
+        <property name="customPreVariableTypes">
+            <list>
+                <ref bean="executedServicesEntitiesType"/>
+            </list>
+        </property>
     </bean>
 
     <!-- Add by Yanglu 2017.11.7 注入自定义的Factory -->
@@ -117,19 +122,49 @@
      此处加入bean定义是为了在非spring方式使用此Class的时候可以取得spring的内容
 
      -->
-    <bean id="CrfRuleDelegateService" class="com.bmsmart.service.activiti.rule.CrfRuleDelegateService" scope="prototype"/>
-    <bean id="DicRuleDelegateService" class="com.bmsmart.service.activiti.rule.DicRuleDelegateService" scope="prototype"/>
-    <bean id="SelectRuleDelegateService" class="com.bmsmart.service.activiti.rule.SelectRuleDelegateService" scope="prototype"/>
-    <bean id="AnnRuleDelegateService" class="com.bmsmart.service.activiti.rule.AnnRuleDelegateService" scope="prototype"/>
-    <bean id="GpuRuleDelegateService" class="com.bmsmart.service.activiti.rule.GpuRuleDelegateService" scope="prototype"/>
-    <bean id="GmmRuleDelegateService" class="com.bmsmart.service.activiti.rule.GmmRuleDelegateService" scope="prototype"/>
-    <bean id="NbmRuleDelegateService" class="com.bmsmart.service.activiti.rule.NbmRuleDelegateService" scope="prototype"/>
+    <!-- ■■■■■■■■分子任务——语义模型■■■■■■■■■■■ -->
+    <!-- 正向字典匹配 -->
+    <bean id="ruleDelegateWstFmmService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateWstFmmServiceImpl"
+          scope="prototype"/>
+    <!-- 条件随机场CRF -->
+    <bean id="ruleDelegateWstCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateWstCrfServiceImpl"
+          scope="prototype"/>
 
+    <!-- ■■■■■■■■文本分类任务——语义模型■■■■■■■■ -->
+    <!-- 字典匹配 -->
+    <bean id="ruleDelegateTccMmsegService"
+          class="com.bmsmart.service.activiti.rule.impl.RuleDelegateTccMmsegServiceImpl" scope="prototype"/>
+    <!-- 条件随机场CRF -->
+    <bean id="ruleDelegateTccCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateTccCrfServiceImpl"
+          scope="prototype"/>
+    <!-- 朴素贝叶斯 -->
+    <bean id="ruleDelegateTccNavieBService"
+          class="com.bmsmart.service.activiti.rule.impl.RuleDelegateTccNavieBServiceImpl" scope="prototype"/>
+
+    <!-- ■■■■■■■■属性识别任务——语义模型■■■■■■■■ -->
+    <!-- 条件随机场 -->
+    <bean id="ruleDelegatePtrCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegatePtrCrfServiceImpl"
+          scope="prototype"/>
+
+    <!-- ■■■■■■■■命名实体识别任务——语义模型■■■■■ -->
+    <!-- 字典匹配 -->
+    <bean id="ruleDelegateNerMmsegService"
+          class="com.bmsmart.service.activiti.rule.impl.RuleDelegateNerMmsegServiceImpl" scope="prototype"/>
+    <!-- 条件随机场 -->
+    <bean id="ruleDelegateNerCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateNerCrfServiceImpl"
+          scope="prototype"/>
 
 
     <!-- Test for Calculate Service -->
-    <bean id="itmsCalculateServiceAnn" class="com.bmsmart.service.local.impl.ItmsCalculateServiceAnnImpl"/>
+    <bean id="itmsCalculateService" class="com.bmsmart.service.local.impl.ItmsCalculateServiceDefaultImpl"/>
 
+
+    <!-- Add customer object type  -->
+    <bean id="executedServicesEntitiesType" class="org.activiti.engine.impl.variable.ExecutedServicesEntitiesType">
+        <constructor-arg value="executedServicesEntitiesType"/>
+        <constructor-arg type="java.lang.Class"
+                         value="com.bmsmart.service.activiti.factory.entities.ExecutedServicesEntities"/>
+    </bean>
 
 
 </beans>

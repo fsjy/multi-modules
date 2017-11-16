@@ -7,6 +7,7 @@ import org.activiti.engine.delegate.JavaDelegate;
  * Ann 神经网络 训练模型服务
  * Add by Yanglu 2017.10.26
  */
+@Deprecated
 public class AnnDelegateService extends DelegateService implements JavaDelegate {
 
     /**

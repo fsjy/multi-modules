@@ -9,8 +9,8 @@
         {
           "id": "process_id",
           "type": "String",
-          "title": "流程定义器_BMS_",
-          "value": "自定义_BMS_",
+          "title": "title_BMS_",
+          "value": "iasdjf345L34a_sE34Qggdsf3_",
           "description": "Unique identifier of the process definition.",
           "popular": true
         }
@@ -30,13 +30,13 @@
       ]
     },
     {
-      "name": "namepackage_BMS_CRF",
+      "name": "namepackage_BMS_TCC_MMSEG",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "Name",
-          "value": "CRF服务",
+          "value": "文本分类任务——字典匹配",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -45,13 +45,13 @@
     },
 
     {
-      "name": "namepackage_BMS_CRF",
+      "name": "namepackage_BMS_NER_CRF",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "Name",
-          "value": "CRF服务",
+          "value": "命名实体识别任务——条件随机场CRF服务",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -60,13 +60,13 @@
     },
 
     {
-      "name": "namepackage_BMS_DIC",
+      "name": "namepackage_BMS_TCC_CRF",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "Name",
-          "value": "字典服务",
+          "value": "文本分类任务——条件随机场CRF",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -77,13 +77,13 @@
 
 
     {
-      "name": "namepackage_BMS_NBM",
+      "name": "namepackage_BMS_NER_MMSEG",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "Name",
-          "value": "朴素贝叶斯服务",
+          "value": "命名实体识别任务——字典匹配",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -91,13 +91,13 @@
       ]
     },
     {
-      "name": "namepackage_BMS_ANN",
+      "name": "namepackage_BMS_WST_CRF",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "Name",
-          "value": "神经网络服务",
+          "value": "分词任务——条件随机场CRF",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -105,13 +105,13 @@
       ]
     },
     {
-      "name": "namepackage_BMS_GMM",
+      "name": "namepackage_BMS_TCC_NAVIEB",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "Name",
-          "value": "高斯混合模型服务",
+          "value": "文本分类任务——朴素贝叶斯服务",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -119,13 +119,13 @@
       ]
     },
     {
-      "name": "namepackage_BMS_SEL",
+      "name": "namepackage_BMS_WST_FMM",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "服务名称",
-          "value": "选择服务",
+          "value": "分词任务——正向字典匹配",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -133,13 +133,13 @@
       ]
     },
     {
-      "name": "namepackage_BMS_GPU",
+      "name": "namepackage_BMS_PTR_CRF",
       "properties": [
         {
           "id": "name",
           "type": "String",
           "title": "Name",
-          "value": "图像算法服务",
+          "value": "属性识别任务——条件随机场",
           "description": "The descriptive name of the BPMN element.",
           "popular": true,
           "refToView": "text_name"
@@ -428,87 +428,6 @@
       ]
     },
 
-    {
-      "name": "servicetaskclasspackage_BMS_SEL",
-      "properties": [
-        {
-          "id": "servicetaskclass",
-          "type": "String",
-          "title": "Class",
-          "value": "com.bmsmart.service.activiti.java.SelectDelegateService",
-          "description": "Class that implements the service task logic.",
-          "popular": true
-        }
-      ]
-    },
-
-
-    {
-      "name": "servicetaskclasspackage_BMS_CRF",
-      "properties": [
-        {
-          "id": "servicetaskclass",
-          "type": "String",
-          "title": "Class",
-          "value": "com.bmsmart.service.activiti.java.CrfDelegateService",
-          "description": "Class that implements the service task logic.",
-          "popular": true
-        }
-      ]
-    },
-    {
-      "name": "servicetaskclasspackage_BMS_DIC",
-      "properties": [
-        {
-          "id": "servicetaskclass",
-          "type": "String",
-          "title": "Class",
-          "value": "com.bmsmart.service.activiti.java.DicDelegateService",
-          "description": "Class that implements the service task logic.",
-          "popular": true
-        }
-      ]
-    },
-    {
-      "name": "servicetaskclasspackage_BMS_ANN",
-      "properties": [
-        {
-          "id": "servicetaskclass",
-          "type": "String",
-          "title": "Class",
-          "value": "com.bmsmart.service.activiti.java.AnnDelegateService",
-          "description": "Class that implements the service task logic.",
-          "popular": true
-        }
-      ]
-    },
-    {
-      "name": "servicetaskclasspackage_BMS_NBM",
-      "properties": [
-        {
-          "id": "servicetaskclass",
-          "type": "String",
-          "title": "Class",
-          "value": "com.bmsmart.service.activiti.java.NbmDelegateService",
-          "description": "Class that implements the service task logic.",
-          "popular": true
-        }
-      ]
-    },
-
-    {
-      "name": "servicetaskclasspackage_BMS_GMM",
-      "properties": [
-        {
-          "id": "servicetaskclass",
-          "type": "String",
-          "title": "Class",
-          "value": "com.bmsmart.service.activiti.java.GmmDelegateService",
-          "description": "Class that implements the service task logic.",
-          "popular": true
-        }
-      ]
-    },
 
     {
       "name": "servicetaskclasspackage_BMS_GPU",
@@ -524,13 +443,13 @@
       ]
     },
     {
-      "name": "servicetaskdelegateexpressionpackage_BMS_ANN",
+      "name": "servicetaskdelegateexpressionpackage_BMS_WST_FMM",
       "properties": [
         {
           "id": "servicetaskdelegateexpression",
           "type": "String",
           "title": "Delegate expression",
-          "value": "${AnnRuleDelegateService}",
+          "value": "${ruleDelegateWstFmmService}",
           "description": "Service task logic defined with a delegate expression.",
           "popular": true
         }
@@ -538,13 +457,13 @@
     },
 
     {
-      "name": "servicetaskdelegateexpressionpackage_BMS_CRF",
+      "name": "servicetaskdelegateexpressionpackage_BMS_WST_CRF",
       "properties": [
         {
           "id": "servicetaskdelegateexpression",
           "type": "String",
           "title": "Delegate expression",
-          "value": "${CrfRuleDelegateService}",
+          "value": "${ruleDelegateWstCrfService}",
           "description": "Service task logic defined with a delegate expression.",
           "popular": true
         }
@@ -552,13 +471,13 @@
     },
 
     {
-      "name": "servicetaskdelegateexpressionpackage_BMS_DIC",
+      "name": "servicetaskdelegateexpressionpackage_BMS_TCC_MMSEG",
       "properties": [
         {
           "id": "servicetaskdelegateexpression",
           "type": "String",
           "title": "Delegate expression",
-          "value": "${DicRuleDelegateService}",
+          "value": "${ruleDelegateTccMmsegService}",
           "description": "Service task logic defined with a delegate expression.",
           "popular": true
         }
@@ -566,13 +485,13 @@
     },
 
     {
-      "name": "servicetaskdelegateexpressionpackage_BMS_GMM",
+      "name": "servicetaskdelegateexpressionpackage_BMS_TCC_CRF",
       "properties": [
         {
           "id": "servicetaskdelegateexpression",
           "type": "String",
           "title": "Delegate expression",
-          "value": "${GmmRuleDelegateService}",
+          "value": "${ruleDelegateTccCrfService}",
           "description": "Service task logic defined with a delegate expression.",
           "popular": true
         }
@@ -580,13 +499,13 @@
     },
 
     {
-      "name": "servicetaskdelegateexpressionpackage_BMS_GPU",
+      "name": "servicetaskdelegateexpressionpackage_BMS_TCC_NAVIEB",
       "properties": [
         {
           "id": "servicetaskdelegateexpression",
           "type": "String",
           "title": "Delegate expression",
-          "value": "${GpuRuleDelegateService}",
+          "value": "${ruleDelegateTccNavieBService}",
           "description": "Service task logic defined with a delegate expression.",
           "popular": true
         }
@@ -594,13 +513,13 @@
     },
 
     {
-      "name": "servicetaskdelegateexpressionpackage_BMS_NBM",
+      "name": "servicetaskdelegateexpressionpackage_BMS_PTR_CRF",
       "properties": [
         {
           "id": "servicetaskdelegateexpression",
           "type": "String",
           "title": "Delegate expression",
-          "value": "${NbmRuleDelegateService}",
+          "value": "${ruleDelegatePtrCrfService}",
           "description": "Service task logic defined with a delegate expression.",
           "popular": true
         }
@@ -608,19 +527,31 @@
     },
 
     {
-      "name": "servicetaskdelegateexpressionpackage_BMS_SEL",
+      "name": "servicetaskdelegateexpressionpackage_BMS_NER_MMSEG",
       "properties": [
         {
           "id": "servicetaskdelegateexpression",
           "type": "String",
           "title": "Delegate expression",
-          "value": "${SelectRuleDelegateService}",
+          "value": "${ruleDelegateNerMmsegService}",
           "description": "Service task logic defined with a delegate expression.",
           "popular": true
         }
       ]
     },
-
+    {
+      "name": "servicetaskdelegateexpressionpackage_BMS_NER_CRF",
+      "properties": [
+        {
+          "id": "servicetaskdelegateexpression",
+          "type": "String",
+          "title": "Delegate expression",
+          "value": "${ruleDelegateNerCrfService}",
+          "description": "Service task logic defined with a delegate expression.",
+          "popular": true
+        }
+      ]
+    },
 
 
 
@@ -1504,7 +1435,7 @@
     },
     {
       "type": "node",
-      "id": "BusinessRule_BMS_SEL",
+      "id": "BusinessRule_BMS_WST_FMM",
       "title": "正向字典匹配",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1514,7 +1445,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_SEL",
+        "namepackage_BMS_WST_FMM",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1527,7 +1458,7 @@
         "isforcompensationpackage_BMS_RULETASK",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_SEL",
+        "servicetaskdelegateexpressionpackage_BMS_WST_FMM",
         "ruletask_excludepackage_BMS_RULETASK",
         "ruletask_resultpackage_BMS_RULETASK",
         "BMS_TEST_INPUT"
@@ -1543,7 +1474,7 @@
     },
     {
       "type": "node",
-      "id": "BusinessRule_BMS_ANN",
+      "id": "BusinessRule_BMS_WST_CRF",
       "title": "条件随机场CRF",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1553,7 +1484,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_ANN",
+        "namepackage_BMS_WST_CRF",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1564,7 +1495,7 @@
         "multiinstance_variablepackage_BMS_RULETASK",
         "multiinstance_conditionpackage_BMS_RULETASK",
         "isforcompensationpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_ANN",
+        "servicetaskdelegateexpressionpackage_BMS_WST_CRF",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
         "ruletask_excludepackage_BMS_RULETASK",
@@ -1582,7 +1513,7 @@
 
     {
       "type": "node",
-      "id": "BusinessRule_BMS_CRF",
+      "id": "BusinessRule_BMS_TCC_MMSEG",
       "title": "字典匹配",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1592,7 +1523,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_CRF",
+        "namepackage_BMS_TCC_MMSEG",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1603,7 +1534,7 @@
         "multiinstance_variablepackage_BMS_RULETASK",
         "multiinstance_conditionpackage_BMS_RULETASK",
         "isforcompensationpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_CRF",
+        "servicetaskdelegateexpressionpackage_BMS_TCC_MMSEG",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
         "ruletask_excludepackage_BMS_RULETASK",
@@ -1621,7 +1552,7 @@
 
     {
       "type": "node",
-      "id": "BusinessRule_BMS_DIC",
+      "id": "BusinessRule_BMS_TCC_CRF",
       "title": "条件随机场CRF",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1631,7 +1562,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_DIC",
+        "namepackage_BMS_TCC_CRF",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1642,7 +1573,7 @@
         "multiinstance_variablepackage_BMS_RULETASK",
         "multiinstance_conditionpackage_BMS_RULETASK",
         "isforcompensationpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_DIC",
+        "servicetaskdelegateexpressionpackage_BMS_TCC_CRF",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
         "ruletask_excludepackage_BMS_RULETASK",
@@ -1659,7 +1590,7 @@
     },
     {
       "type": "node",
-      "id": "BusinessRule_BMS_GMM",
+      "id": "BusinessRule_BMS_TCC_NAVIEB",
       "title": "朴素贝叶斯",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1669,7 +1600,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_GMM",
+        "namepackage_BMS_TCC_NAVIEB",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1680,7 +1611,7 @@
         "multiinstance_variablepackage_BMS_RULETASK",
         "multiinstance_conditionpackage_BMS_RULETASK",
         "isforcompensationpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_GMM",
+        "servicetaskdelegateexpressionpackage_BMS_TCC_NAVIEB",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
         "ruletask_excludepackage_BMS_RULETASK",
@@ -1697,7 +1628,7 @@
     },
     {
       "type": "node",
-      "id": "BusinessRule_BMS_GPU",
+      "id": "BusinessRule_BMS_PTR_CRF",
       "title": "条件随机场",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1707,7 +1638,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_GPU",
+        "namepackage_BMS_PTR_CRF",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1718,7 +1649,7 @@
         "multiinstance_variablepackage_BMS_RULETASK",
         "multiinstance_conditionpackage_BMS_RULETASK",
         "isforcompensationpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_GPU",
+        "servicetaskdelegateexpressionpackage_BMS_PTR_CRF",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
         "ruletask_excludepackage_BMS_RULETASK",
@@ -1735,7 +1666,7 @@
     },
     {
       "type": "node",
-      "id": "BusinessRule_BMS_NBM",
+      "id": "BusinessRule_BMS_NER_MMSEG",
       "title": "字典匹配",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1745,7 +1676,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_NBM",
+        "namepackage_BMS_NER_MMSEG",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1756,7 +1687,7 @@
         "multiinstance_variablepackage_BMS_RULETASK",
         "multiinstance_conditionpackage_BMS_RULETASK",
         "isforcompensationpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_NBM",
+        "servicetaskdelegateexpressionpackage_BMS_NER_MMSEG",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
         "ruletask_excludepackage_BMS_RULETASK",
@@ -1773,7 +1704,7 @@
     },
     {
       "type": "node",
-      "id": "BusinessRule_BMS_NBM2",
+      "id": "BusinessRule_BMS_NER_CRF",
       "title": "条件随机场",
       "description": "An automatic task with rule logic",
       "view": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg\n   xmlns=\"http://www.w3.org/2000/svg\"\n   xmlns:svg=\"http://www.w3.org/2000/svg\"\n   xmlns:oryx=\"http://www.b3mn.org/oryx\"\n   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\n   width=\"102\"\n   height=\"82\"\n   version=\"1.0\">\n  <defs></defs>\n  <oryx:magnets>\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"20\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"40\" oryx:anchors=\"left\" />\n  \t<oryx:magnet oryx:cx=\"1\" oryx:cy=\"60\" oryx:anchors=\"left\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"79\" oryx:anchors=\"bottom\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"20\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"40\" oryx:anchors=\"right\" />\n  \t<oryx:magnet oryx:cx=\"99\" oryx:cy=\"60\" oryx:anchors=\"right\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"25\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t<oryx:magnet oryx:cx=\"75\" oryx:cy=\"1\" oryx:anchors=\"top\" />\n  \t\n  \t<oryx:magnet oryx:cx=\"50\" oryx:cy=\"40\" oryx:default=\"yes\" />\n  </oryx:magnets>\n  <g pointer-events=\"fill\" oryx:minimumSize=\"50 40\">\n  \t<defs>\n\t\t<radialGradient id=\"background\" cx=\"10%\" cy=\"10%\" r=\"100%\" fx=\"10%\" fy=\"10%\">\n\t\t\t<stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"1\"/>\n\t\t\t<stop id=\"fill_el\" offset=\"100%\" stop-color=\"#ffffcc\" stop-opacity=\"1\"/>\n\t\t</radialGradient>\n\t</defs>\n\t\n\t<rect id=\"text_frame\" oryx:anchors=\"bottom top right left\" x=\"1\" y=\"1\" width=\"94\" height=\"79\" rx=\"10\" ry=\"10\" stroke=\"none\" stroke-width=\"0\" fill=\"none\" />\n\t<rect id=\"bg_frame\" oryx:resize=\"vertical horizontal\" x=\"0\" y=\"0\" width=\"100\" height=\"80\" rx=\"10\" ry=\"10\" stroke=\"#bbbbbb\" stroke-width=\"1\" fill=\"#f9f9f9\" />\n\t\t<text \n\t\t\tfont-size=\"12\" \n\t\t\tid=\"text_name\" \n\t\t\tx=\"50\" \n\t\t\ty=\"40\" \n\t\t\toryx:align=\"middle center\"\n\t\t\toryx:fittoelem=\"text_frame\"\n\t\t\tstroke=\"#373e48\">\n\t\t</text>\n    \n\t<g id=\"businessRuleTask\" transform=\"translate(4,3)\">\n\t\t<path oryx:anchors=\"top left\" \n\t\t\t d=\"m 1,2 0,14 16,0 0,-14 z m 1.45458,5.6000386 2.90906,0 0,2.7999224 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.7999224 -8.72718,0 z m -4.36364,4.1998844 2.90906,0 0,2.800116 -2.90906,0 z m 4.36364,0 8.72718,0 0,2.800116 -8.72718,0 z\"\n     \t\tstyle=\"fill:#72a7d0;stroke:none\"\n\t\t/>\n\t</g>\n\t\n\t<g id=\"parallel\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M46 70 v8 M50 70 v8 M54 70 v8\" stroke-width=\"2\" />\n\t</g>\n\t\n\t<g id=\"sequential\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" stroke-width=\"2\" d=\"M46,76h10M46,72h10 M46,68h10\"/>\n\t</g>\n\n\t<g id=\"compensation\">\n\t\t<path oryx:anchors=\"bottom\" fill=\"none\" stroke=\"#bbbbbb\" d=\"M 62 74 L 66 70 L 66 78 L 62 74 L 62 70 L 58 74 L 62 78 L 62 74\" stroke-width=\"1\" />\n\t</g>\n  </g>\n</svg>",
@@ -1783,7 +1714,7 @@
       ],
       "propertyPackages": [
         "overrideidpackage",
-        "namepackage_BMS_NBM",
+        "namepackage_BMS_NER_CRF",
         "documentationpackage",
         "asynchronousdefinitionpackage_BMS_RULETASK",
         "exclusivedefinitionpackage_BMS_RULETASK",
@@ -1794,7 +1725,7 @@
         "multiinstance_variablepackage_BMS_RULETASK",
         "multiinstance_conditionpackage_BMS_RULETASK",
         "isforcompensationpackage_BMS_RULETASK",
-        "servicetaskdelegateexpressionpackage_BMS_NBM",
+        "servicetaskdelegateexpressionpackage_BMS_NER_CRF",
         "ruletask_rulespackage_BMS_RULETASK",
         "ruletask_variables_inputpackage_BMS_RULETASK",
         "ruletask_excludepackage_BMS_RULETASK",

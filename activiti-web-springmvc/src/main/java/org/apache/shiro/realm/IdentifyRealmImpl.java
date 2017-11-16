@@ -1,4 +1,4 @@
-package com.bmsmart.security.shiro.realm;
+package org.apache.shiro.realm;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

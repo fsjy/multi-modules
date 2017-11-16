@@ -1,6 +1,7 @@
 package com.bmsmart.controllers.local;
 
 import com.bmsmart.constant.CONST;
+import com.bmsmart.tookit.JsonModifier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.activiti.bpmn.converter.BpmnXMLConverter;
@@ -9,8 +10,6 @@ import org.activiti.editor.language.json.converter.BpmnJsonConverter;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.Deployment;
-import org.activiti.engine.repository.ProcessDefinition;
-import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,42 +44,29 @@ public class deployController {
     @RequestMapping(value = "local/deploy", method = RequestMethod.POST)
     public ResponseEntity executeRuleService(String modelId, String title, String content) throws IOException {
 
-
-        String id = modelId;
-
-
         byte[] bytes = repositoryService.getModelEditorSource(modelId);
 
-        String strOut = new String(bytes, "UTF-8");
+        ObjectNode modelNode = (ObjectNode) new ObjectMapper().readTree(new String(bytes, "UTF-8"));
 
-        System.out.println(strOut);
-
-        strOut = strOut.replace("BusinessRule_BMS_SEL", "BusinessRule");
-
-        strOut = strOut.replace("BusinessRule_BMS_CRF", "BusinessRule");
-        strOut = strOut.replace("BusinessRule_BMS_GMM", "BusinessRule");
-        strOut = strOut.replace("BusinessRule_BMS_ANN", "BusinessRule");
-        strOut = strOut.replace("BusinessRule_BMS_DIC", "BusinessRule");
-        strOut = strOut.replace("BusinessRule_BMS_GPU", "BusinessRule");
-        strOut = strOut.replace("BusinessRule_BMS_NBM", "BusinessRule");
-
-
-        ObjectNode modelNode = (ObjectNode) new ObjectMapper().readTree(strOut);
+        // 发布之前替换所有自定义的ruleTaskService的ID
+        JsonModifier.changeNodeValue(modelNode,
+                CONST.PROPERTY_ID,
+                CONST.businessRuleReplaceValues,
+                CONST.BUSINESSRULE_BASE,
+                true);
 
         deployModelerModel(modelNode);
 
         Map<String, Object> variablesMaps = new HashMap<>();
 
-
         variablesMaps.put(CONST.ACT_TITLE, "这是一个悲惨的故事");
         variablesMaps.put(CONST.ACT_CONTENT, "每天上班8个小时难道不够悲惨么？");
 
-        ProcessDefinitionQuery processDefinition = repositoryService.createProcessDefinitionQuery();
-
-        String key = modelNode.get("properties").get("process_id").asText();
+        // 使用process_id进行发布
+        // 保存动作时已确保唯一process_id = authorName + "_" + ACT_RE_MODEL.ID_
+        String key = modelNode.get("properties").get(CONST.PROPERTY_PROCESS_ID).asText();
 
         ProcessInstance processInstanceBykey = runtimeService.startProcessInstanceByKey(key, variablesMaps);
-        //ProcessInstance processInstanceByDefindedID = runtimeService.startProcessInstanceById(definedId, variablesMaps);
 
         Map<String, Object> vars = processInstanceBykey.getProcessVariables();
 
@@ -100,7 +86,18 @@ public class deployController {
             public void accept(String k, Object v) {
 
                 System.out.println("key: " + k.toString());
-                System.out.println("value: " + v.toString());
+                if (v instanceof Map) {
+
+                    ((Map)v).forEach(new BiConsumer() {
+                        @Override
+                        public void accept(Object k, Object v) {
+                            System.out.println("    | sub_key: " + k.toString());
+                            System.out.println("    | sub_value: " + v.toString());
+                        }
+                    });
+
+
+                }
 
             }
 
