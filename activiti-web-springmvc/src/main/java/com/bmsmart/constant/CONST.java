@@ -42,10 +42,17 @@ public class CONST {
     public static final Map<String, String> businessRuleNameMapping = new HashMap<>();
 
     /* 文章的title */
-    public static final String ACT_TITLE = "title";
+    public static final String TITLE = "title";
 
     /* 文章的content内容 */
+    public static final String ZZCONTENT = "content";
+
+    /* 文章的title 标记为ActivitiID */
+    public static final String ACT_TITLE = "title";
+
+    /* 文章的content内容 标记为ActivitiID*/
     public static final String ACT_CONTENT = "content";
+
 
     /* xml定义 */
     public static final String PROPERTY_PROCESS_ID = "process_id";
@@ -76,5 +83,10 @@ public class CONST {
      * ruleTaskService服务进行params input output设定操作使用参数
      ******************************************************************************************************************
      */
+    public static final String OK = "OK";
+    public static final String NG = "NG";
+
+    public static final String APPEND_STATUS = "_status";
+    public static final String APPEND_SIZE = "_size";
 
 }

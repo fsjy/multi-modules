@@ -2,6 +2,7 @@ package com.bmsmart.service.activiti.factory;
 
 import com.bmsmart.service.activiti.factory.entities.ExecutedServicesEntities;
 import com.bmsmart.service.activiti.factory.entities.CurrentServiceEntity;
+import com.bmsmart.service.activiti.factory.entities.RuleDelegateOutputParams;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
 
 public interface ParamsCreatingFactory {
@@ -20,10 +21,11 @@ public interface ParamsCreatingFactory {
     void bindingNecessaryInputParams(ExecutedServicesEntities executedServicesEntities,
                                      CurrentServiceEntity currentServiceEntity);
 
-    void mappingOutputParams();
+    void bindingOutputContent(CurrentServiceEntity currentServiceEntity,
+                              ActivityExecution execution);
 
-    void createIn(ActivityExecution execution, CurrentServiceEntity executingServiceEntity);
+    ExecutedServicesEntities createIn(ActivityExecution execution, CurrentServiceEntity executingServiceEntity);
 
-    void createOut();
+    void createOut(CurrentServiceEntity currentServiceEntity, ExecutedServicesEntities executedServicesEntities, ActivityExecution execution);
 
 }

@@ -13,7 +13,7 @@ public class RuleDelegateTccNavieBServiceImpl extends AbstractRuleDelegateServic
     private static final Logger log = LoggerFactory.getLogger(RuleDelegateTccNavieBServiceImpl.class);
 
     @Autowired
-    private ItmsCalculateService itmsCalculateService;
+    private ItmsCalculateService itmsCalculateServiceTccNavieB;
 
     @Override
     public String getSimpleName() {
@@ -27,7 +27,7 @@ public class RuleDelegateTccNavieBServiceImpl extends AbstractRuleDelegateServic
 
     @Override
     protected ItmsCalculateService getCalculateService() {
-        return itmsCalculateService;
+        return itmsCalculateServiceTccNavieB;
 
     }
 }

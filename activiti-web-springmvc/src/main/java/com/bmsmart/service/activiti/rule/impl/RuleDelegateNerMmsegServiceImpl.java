@@ -13,7 +13,7 @@ public class RuleDelegateNerMmsegServiceImpl extends AbstractRuleDelegateService
     private static final Logger log = LoggerFactory.getLogger(RuleDelegateNerMmsegServiceImpl.class);
 
     @Autowired
-    private ItmsCalculateService itmsCalculateService;
+    private ItmsCalculateService itmsCalculateServiceNerMmseg;
 
     @Override
     public String getSimpleName() {
@@ -27,6 +27,6 @@ public class RuleDelegateNerMmsegServiceImpl extends AbstractRuleDelegateService
 
     @Override
     protected ItmsCalculateService getCalculateService() {
-        return itmsCalculateService;
+        return itmsCalculateServiceNerMmseg;
     }
 }

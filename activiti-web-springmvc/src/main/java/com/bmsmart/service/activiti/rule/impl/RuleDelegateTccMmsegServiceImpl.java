@@ -15,7 +15,7 @@ public class RuleDelegateTccMmsegServiceImpl extends AbstractRuleDelegateService
     private static final Logger log = LoggerFactory.getLogger(LocalBusinessRuleTaskDelegateImpl.class);
 
     @Autowired
-    private ItmsCalculateService itmsCalculateService;
+    private ItmsCalculateService itmsCalculateServiceTccMmseg;
 
     @Override
     public String getSimpleName() {
@@ -29,6 +29,6 @@ public class RuleDelegateTccMmsegServiceImpl extends AbstractRuleDelegateService
 
     @Override
     protected ItmsCalculateService getCalculateService() {
-        return itmsCalculateService;
+        return itmsCalculateServiceTccMmseg;
     }
 }

@@ -1,7 +1,6 @@
 package com.bmsmart.service.activiti.factory.entities;
 
 import com.bmsmart.service.activiti.rule.entity.ActivitiInputParams;
-import com.bmsmart.service.activiti.rule.entity.ServiceInputParams;
 
 public class CurrentServiceEntity {
 
@@ -11,7 +10,26 @@ public class CurrentServiceEntity {
     // Activiti流程图当前服务输入变量
     private ActivitiInputParams activityInputVariables;
 
-    private ServiceInputParams serviceInputParams;
+
+    private RuleDelegateInputParams ruleDelegateInputParams;
+
+    private RuleDelegateOutputParams ruleDelegateOutputParams;
+
+    public RuleDelegateOutputParams getRuleDelegateOutputParams() {
+        return ruleDelegateOutputParams;
+    }
+
+    public void setRuleDelegateOutputParams(RuleDelegateOutputParams ruleDelegateOutputParams) {
+        this.ruleDelegateOutputParams = ruleDelegateOutputParams;
+    }
+
+    public RuleDelegateInputParams getRuleDelegateInputParams() {
+        return ruleDelegateInputParams;
+    }
+
+    public void setRuleDelegateInputParams(RuleDelegateInputParams ruleDelegateInputParams) {
+        this.ruleDelegateInputParams = ruleDelegateInputParams;
+    }
 
     private String currentActivityID;
 
@@ -23,15 +41,11 @@ public class CurrentServiceEntity {
         this.currentActivityID = currentActivityID;
     }
 
-    public ServiceInputParams getServiceInputParams() {
-        return serviceInputParams;
+
+    public void addOutput(String k, String v) {
+        this.ruleDelegateInputParams.addParams(k, v);
     }
 
-
-
-    public void setServiceInputParams(ServiceInputParams serviceInputParams) {
-        this.serviceInputParams = serviceInputParams;
-    }
 
     public String getSimpleName() {
         return simpleName;

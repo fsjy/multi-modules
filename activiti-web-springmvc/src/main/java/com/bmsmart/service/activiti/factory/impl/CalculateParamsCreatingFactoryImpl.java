@@ -2,16 +2,16 @@ package com.bmsmart.service.activiti.factory.impl;
 
 import com.bmsmart.constant.CONST;
 import com.bmsmart.service.activiti.factory.ParamsCreatingFactory;
-import com.bmsmart.service.activiti.factory.entities.ExecutedServicesEntities;
-import com.bmsmart.service.activiti.factory.entities.CurrentServiceEntity;
-import com.bmsmart.service.activiti.rule.entity.ServiceInputParams;
+import com.bmsmart.service.activiti.factory.entities.*;
+import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
+import org.activiti.engine.impl.persistence.entity.VariableInstanceEntity;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
-import org.omg.CORBA.Current;
+import org.activiti.engine.impl.variable.CustomObjectType;
+import org.activiti.engine.impl.variable.ServiceType;
+import org.codehaus.groovy.util.ListHashMap;
 
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class CalculateParamsCreatingFactoryImpl implements ParamsCreatingFactory {
 
@@ -45,24 +45,18 @@ public class CalculateParamsCreatingFactoryImpl implements ParamsCreatingFactory
                 throw new IllegalArgumentException("can not get content from execution, variable title is not String type");
             }
 
-            executedServicesEntities = ExecutedServicesEntities
-                    .create()
-                    .addService(CONST.ACT_TITLE, (String) objectTitle)
-                    .addService(CONST.ACT_CONTENT, (String) objectContent)
-                    .addService(execution.getCurrentActivityId(),
-                            currentServiceEntity.getSimpleName());
-            // TODO 修改插入map的内容
+            executedServicesEntities = ExecutedServicesEntities.create();
+
+            executedServicesEntities.addExecutedServiceContent(ServiceReturnContent.createTitle(objectTitle.toString()));
+
+            executedServicesEntities.addExecutedServiceContent(ServiceReturnContent.createContent(objectContent.toString()));
+
 
         } else {
             // 不是第一个处理service
             if (object instanceof ExecutedServicesEntities) {
 
                 executedServicesEntities = (ExecutedServicesEntities) object;
-
-                executedServicesEntities
-                        .addService(execution.getCurrentActivityId(),
-                                currentServiceEntity.getSimpleName());
-                // TODO 修改插入map的内容
 
             } else {
                 throw new IllegalArgumentException("can not use '_BMS_EXECUTION_SERVICE_LIST' to get service list from ActivityExecution");
@@ -74,27 +68,30 @@ public class CalculateParamsCreatingFactoryImpl implements ParamsCreatingFactory
     }
 
     @Override
-    public void createIn(ActivityExecution execution, CurrentServiceEntity currentServiceEntity) {
+    public ExecutedServicesEntities createIn(ActivityExecution execution, CurrentServiceEntity currentServiceEntity) {
 
         currentServiceEntity.setCurrentActivityID(execution.getCurrentActivityId());
 
         // 获取当前处理过的所有services
         ExecutedServicesEntities executedServicesEntities = createServiceEntityRepository(execution, currentServiceEntity);
 
-        // 加入当前的service ID
-        appendServiceId(execution, executedServicesEntities);
+        // 加入当前的service ID 处理加入
+        //appendServiceId(execution, executedServicesEntities);
 
         // 绑定需要的数据到当前输入params
         bindingNecessaryInputParams(executedServicesEntities, currentServiceEntity);
 
+        return executedServicesEntities;
     }
 
     @Override
     public void bindingNecessaryInputParams(ExecutedServicesEntities executedServicesEntities,
                                             CurrentServiceEntity currentServiceEntity) {
 
-        Map<String, String> mapping = executedServicesEntities.getServiceMapping();
-        ServiceInputParams inputParams = new ServiceInputParams();
+        LinkedHashMap<String, ServiceReturnContent> returnContentLinkedHashMap =
+                executedServicesEntities.getExecutedServiceContentLinkedHashMap();
+
+        RuleDelegateInputParams inputParams = new RuleDelegateInputParams();
 
         // 如果当前服务需要指定参数
         if (currentServiceEntity.getActivityInputVariables().isUsing()) {
@@ -102,9 +99,8 @@ public class CalculateParamsCreatingFactoryImpl implements ParamsCreatingFactory
 
             currentServiceEntity.getActivityInputVariables().getInputs().forEach(s -> {
 
-                if (null != mapping.get(s)) {
-
-                    inputParams.addParams(s, mapping.get(s));
+                if (null != returnContentLinkedHashMap.get(s)) {
+                    inputParams.addParams(s, returnContentLinkedHashMap.get(s).getContent());
                 } else {
                     throw new IllegalArgumentException("can not fetch " + s + "from ServiceMapping");
                 }
@@ -113,21 +109,62 @@ public class CalculateParamsCreatingFactoryImpl implements ParamsCreatingFactory
         } else {
 
             // 不需要指定参数则输入为之前所有的数据
-            mapping.forEach((k, v) -> {
+            returnContentLinkedHashMap.forEach((k, v) -> {
 
-                inputParams.addParams(k, v);
+                inputParams.addParams(k, v.getContent());
 
             });
 
         }
 
-        currentServiceEntity.setServiceInputParams(inputParams);
+        currentServiceEntity.setRuleDelegateInputParams(inputParams);
 
     }
 
     @Override
-    public void mappingOutputParams() {
+    public void bindingOutputContent(CurrentServiceEntity currentServiceEntity,
+                                     ActivityExecution execution) {
 
+
+//        execution.setVariable(currentServiceEntity.getCurrentActivityID().concat(CONST.APPEND_STATUS),
+//                currentServiceEntity.getRuleDelegateOutputParams().getStatus());
+//
+//        execution.setVariable(currentServiceEntity.getCurrentActivityID().concat(CONST.APPEND_SIZE),
+//                currentServiceEntity.getRuleDelegateOutputParams().getSize());
+//
+//        execution.setVariable(currentServiceEntity.getCurrentActivityID(),
+//                currentServiceEntity.getRuleDelegateOutputParams().getContent());
+
+//        TestService1 service1 = new TestService1();
+
+        //service1.setSize(currentServiceEntity.getRuleDelegateOutputParams().getSize());
+
+        // execution.setVariable("service1", service1);
+
+
+        ExposeServiceEntity exposeServiceEntity = ExposeServiceEntity.create();
+        exposeServiceEntity.setContent(currentServiceEntity.getRuleDelegateOutputParams().getContent());
+        exposeServiceEntity.setSize(currentServiceEntity.getRuleDelegateOutputParams().getSize());
+        exposeServiceEntity.setStatus(currentServiceEntity.getRuleDelegateOutputParams().getStatus());
+
+        execution.setVariable(currentServiceEntity.getCurrentActivityID(), exposeServiceEntity);
+
+
+        if (execution instanceof ExecutionEntity) {
+
+            VariableInstanceEntity variableInstanceEntity =
+                    VariableInstanceEntity.create(
+                            execution.getActivity().getId(),
+                            new ServiceType("exposeServiceType", ExposeServiceEntity.class),
+                            exposeServiceEntity);
+
+            variableInstanceEntity.setId("inAndOut");
+
+            ((ExecutionEntity) execution).getQueryVariables().add(variableInstanceEntity);
+
+        } else {
+            System.out.println("NO");
+        }
 
     }
 
@@ -138,7 +175,28 @@ public class CalculateParamsCreatingFactoryImpl implements ParamsCreatingFactory
 
 
     @Override
-    public void createOut() {
+    public void createOut(CurrentServiceEntity currentServiceEntity,
+                          ExecutedServicesEntities executedServicesEntities,
+                          ActivityExecution execution) {
+
+
+        executedServicesEntities.addExecutedServiceContent(
+                ServiceReturnContent.createDefaultService(
+                        currentServiceEntity.getCurrentActivityID(),
+                        currentServiceEntity.getSimpleName(),
+                        currentServiceEntity.getRuleDelegateOutputParams().getStatus(),
+                        currentServiceEntity.getRuleDelegateOutputParams().getSize(),
+                        currentServiceEntity.getRuleDelegateOutputParams().getContent()
+                )
+        );
+
+
+        // 更新
+        appendServiceId(execution, executedServicesEntities);
+
+        // 更新外层参数
+        bindingOutputContent(currentServiceEntity, execution);
+
 
     }
 }

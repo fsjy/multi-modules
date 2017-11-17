@@ -34,6 +34,7 @@
         <property name="customPreVariableTypes">
             <list>
                 <ref bean="executedServicesEntitiesType"/>
+                <ref bean="serviceType"/>
             </list>
         </property>
     </bean>
@@ -156,7 +157,14 @@
 
 
     <!-- Test for Calculate Service -->
-    <bean id="itmsCalculateService" class="com.bmsmart.service.local.impl.ItmsCalculateServiceDefaultImpl"/>
+    <bean id="itmsCalculateServiceNerCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServiceNerCrfImpl"/>
+    <bean id="itmsCalculateServiceNerMmseg" class="com.bmsmart.service.local.impl.ItmsCalculateServiceNerMmsegImpl"/>
+    <bean id="itmsCalculateServicePtrCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServicePtrCrfImpl"/>
+    <bean id="itmsCalculateServiceTccCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServiceTccCrfImpl"/>
+    <bean id="itmsCalculateServiceTccMmseg" class="com.bmsmart.service.local.impl.ItmsCalculateServiceTccMmsegImpl"/>
+    <bean id="itmsCalculateServiceTccNavieB" class="com.bmsmart.service.local.impl.ItmsCalculateServiceTccNavieBImpl"/>
+    <bean id="itmsCalculateServiceWstCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServiceWstCrfImpl"/>
+    <bean id="itmsCalculateServiceWstFmm" class="com.bmsmart.service.local.impl.ItmsCalculateServiceWstFmmImpl"/>
 
 
     <!-- Add customer object type  -->
@@ -164,6 +172,12 @@
         <constructor-arg value="executedServicesEntitiesType"/>
         <constructor-arg type="java.lang.Class"
                          value="com.bmsmart.service.activiti.factory.entities.ExecutedServicesEntities"/>
+    </bean>
+
+    <bean id="serviceType" class="org.activiti.engine.impl.variable.ServiceType">
+        <constructor-arg value="exposeServiceType"/>
+        <constructor-arg type="java.lang.Class"
+                         value="com.bmsmart.service.activiti.factory.entities.ExposeServiceEntity"/>
     </bean>
 
 

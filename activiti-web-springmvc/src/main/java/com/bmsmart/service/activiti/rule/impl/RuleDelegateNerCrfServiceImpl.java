@@ -14,7 +14,7 @@ public class RuleDelegateNerCrfServiceImpl extends AbstractRuleDelegateService {
     private static final Logger log = LoggerFactory.getLogger(RuleDelegateNerCrfServiceImpl.class);
 
     @Autowired
-    private ItmsCalculateService itmsCalculateService;
+    private ItmsCalculateService itmsCalculateServiceNerCrf;
 
     @Override
     public String getSimpleName() {
@@ -28,6 +28,6 @@ public class RuleDelegateNerCrfServiceImpl extends AbstractRuleDelegateService {
 
     @Override
     protected ItmsCalculateService getCalculateService() {
-        return this.itmsCalculateService;
+        return this.itmsCalculateServiceNerCrf;
     }
 }

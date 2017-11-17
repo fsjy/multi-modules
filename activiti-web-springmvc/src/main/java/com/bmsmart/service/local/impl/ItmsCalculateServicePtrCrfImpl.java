@@ -1,8 +1,9 @@
 package com.bmsmart.service.local.impl;
 
+import com.bmsmart.constant.CONST;
 import com.bmsmart.service.local.AbstractItmsCalculateService;
 
-public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateService {
+public class ItmsCalculateServicePtrCrfImpl extends AbstractItmsCalculateService {
 
 
 //    @Override
@@ -45,19 +46,20 @@ public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateServic
 //        return null;
 //    }
 
-
     @Override
     public String getResult() {
-        return "default";
+        return "处理：属性识别任务——条件随机场，结果正常！";
     }
 
     @Override
     public String getStatus() {
-        return null;
+        return CONST.OK;
     }
 
     @Override
     public Long getSize() {
-        return null;
+        return Long.valueOf(getResult().length());
     }
+
 }
+

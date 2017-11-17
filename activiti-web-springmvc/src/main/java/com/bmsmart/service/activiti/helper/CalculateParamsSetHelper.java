@@ -1,16 +1,16 @@
 package com.bmsmart.service.activiti.helper;
 
-import com.bmsmart.service.local.entities.CalculateParams;
+import com.bmsmart.service.local.entities.CalculateInputParams;
 
 import java.util.Map;
 
 public class CalculateParamsSetHelper {
 
 
-    public static CalculateParams createParams(Map<String, Object> variablesMap, String serviceId) {
+    public static CalculateInputParams createParams(Map<String, Object> variablesMap, String serviceId) {
 
 
-        CalculateParams params = CalculateParams.create();
+        CalculateInputParams params = CalculateInputParams.create();
 
 
 

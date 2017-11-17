@@ -1,9 +1,13 @@
 package com.bmsmart.service.activiti.rule;
 
 import com.bmsmart.service.activiti.factory.entities.CurrentServiceEntity;
+import com.bmsmart.service.activiti.factory.entities.ExecutedServicesEntities;
+import com.bmsmart.service.activiti.factory.entities.RuleDelegateOutputParams;
 import com.bmsmart.service.activiti.factory.impl.CalculateParamsCreatingFactoryImpl;
 import com.bmsmart.service.activiti.rule.entity.ActivitiInputParams;
 import com.bmsmart.service.local.ItmsCalculateService;
+import com.bmsmart.service.local.entities.CalculateInputParams;
+import com.bmsmart.service.local.entities.CalculateOutputParams;
 import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.impl.LocalBusinessRuleTaskDelegateImpl;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
@@ -15,7 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -51,9 +54,32 @@ public abstract class AbstractRuleDelegateService extends LocalBusinessRuleTaskD
         CurrentServiceEntity currentServiceEntity = CurrentServiceEntity.create(getSimpleName(),
                 convertParams(getRuleVariableInputIdExpressions()));
 
-        factory.createIn(execution, currentServiceEntity);
+        // 传入RuleDelegate的参数绑定
+        ExecutedServicesEntities executedServicesEntities = factory.createIn(execution, currentServiceEntity);
 
-        getCalculateService().execute(currentServiceEntity.getServiceInputParams());
+
+        // 向最终计算服务中 传入参数准备
+        CalculateInputParams calculateInputParams = CalculateInputParams.create();
+        calculateInputParams.setActivitiID(currentServiceEntity.getCurrentActivityID());
+        calculateInputParams.setSimpleName(currentServiceEntity.getSimpleName());
+        calculateInputParams.setIntputServiceIDandContentMapping(currentServiceEntity
+                .getRuleDelegateInputParams()
+                .getIntputServiceIDandContentMapping());
+
+        // 暂时不使用所有的参数作为input 现阶段如果不填写input则使用全部
+        // calculateInputParams.setAllServiceIDandConetentMapping(executedServicesEntities.getExecutedServiceContentLinkedHashMap());
+
+        CalculateOutputParams outputParams = (CalculateOutputParams) getCalculateService().execute(calculateInputParams);
+
+        RuleDelegateOutputParams ruleDelegateOutputParams = new RuleDelegateOutputParams();
+
+        ruleDelegateOutputParams.setContent(outputParams.getContent());
+        ruleDelegateOutputParams.setSize(outputParams.getSize());
+        ruleDelegateOutputParams.setStatus(outputParams.getStatus());
+
+        currentServiceEntity.setRuleDelegateOutputParams(ruleDelegateOutputParams);
+
+        factory.createOut(currentServiceEntity, executedServicesEntities, execution);
 
     }
 
@@ -62,11 +88,8 @@ public abstract class AbstractRuleDelegateService extends LocalBusinessRuleTaskD
         ActivitiInputParams params = new ActivitiInputParams();
         List<String> list = new ArrayList<>();
         if (expressions != null) {
-
             expressions.forEach(expression -> list.add(expression.getExpressionText()));
-
             params.setInputs(list);
-
         }
 
         if (list.size() == 0) {
@@ -88,28 +111,7 @@ public abstract class AbstractRuleDelegateService extends LocalBusinessRuleTaskD
     protected void after(ActivityExecution execution) {
 
 
-        if (execution instanceof ExecutionEntity) {
 
-
-            Map<String, String> variables = new ListHashMap<>();
-
-            variables.put(execution.getActivity().getId() + "_size", this.getClass().getSimpleName() + "_size");
-            variables.put(execution.getActivity().getId() + "_status", this.getClass().getSimpleName() + "_status");
-
-
-            VariableInstanceEntity variableInstanceEntity =
-                    VariableInstanceEntity.create(
-                            execution.getActivity().getId(),
-                            new CustomObjectType("map", Map.class),
-                            variables);
-
-            variableInstanceEntity.setId("inAndOut");
-
-            ((ExecutionEntity) execution).getQueryVariables().add(variableInstanceEntity);
-
-        } else {
-            System.out.println("NO");
-        }
     }
 
 
@@ -120,13 +122,6 @@ public abstract class AbstractRuleDelegateService extends LocalBusinessRuleTaskD
         log.warn("  | " + getSimpleName());
         log.warn("  | " + getNativeName());
         log.warn("   ---------------------------------------------------------------------------------------------");
-
-        log.warn("");
-        log.warn("【All input values】: ");
-        log.warn("   ---------------------------------------------------------------------------------------------");
-
-        log.warn("   ---------------------------------------------------------------------------------------------");
-        log.warn("");
         log.warn("【Using input values】: ");
         log.warn("   ---------------------------------------------------------------------------------------------");
         getRuleVariableInputIdExpressions().forEach(new Consumer<Expression>() {

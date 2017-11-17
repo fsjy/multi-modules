@@ -1,9 +1,9 @@
 package com.bmsmart.service.local.impl;
 
+import com.bmsmart.constant.CONST;
 import com.bmsmart.service.local.AbstractItmsCalculateService;
 
-public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateService {
-
+public class ItmsCalculateServiceWstCrfImpl extends AbstractItmsCalculateService {
 
 //    @Override
 //    public Object execute(CalculateInputParams params) {
@@ -48,16 +48,17 @@ public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateServic
 
     @Override
     public String getResult() {
-        return "default";
+        return "处理:分词任务——条件随机场CRF,结果正常！";
     }
 
     @Override
     public String getStatus() {
-        return null;
+        return CONST.OK;
     }
 
     @Override
     public Long getSize() {
-        return null;
+        return Long.valueOf(getResult().length());
     }
+
 }

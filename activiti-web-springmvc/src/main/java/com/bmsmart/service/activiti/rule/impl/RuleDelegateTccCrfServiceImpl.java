@@ -16,7 +16,7 @@ public class RuleDelegateTccCrfServiceImpl extends AbstractRuleDelegateService {
 
 
     @Autowired
-    private ItmsCalculateService itmsCalculateService;
+    private ItmsCalculateService itmsCalculateServiceTccCrf;
 
     @Override
     public String getSimpleName() {
@@ -30,6 +30,6 @@ public class RuleDelegateTccCrfServiceImpl extends AbstractRuleDelegateService {
 
     @Override
     protected ItmsCalculateService getCalculateService() {
-        return itmsCalculateService;
+        return itmsCalculateServiceTccCrf;
     }
 }

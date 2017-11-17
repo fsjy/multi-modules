@@ -1,6 +1,7 @@
 package com.bmsmart.controllers.local;
 
 import com.bmsmart.constant.CONST;
+import com.bmsmart.service.activiti.factory.entities.ExposeServiceEntity;
 import com.bmsmart.tookit.JsonModifier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -71,7 +72,16 @@ public class deployController {
         Map<String, Object> vars = processInstanceBykey.getProcessVariables();
 
 
-        System.out.println("Instance variables:");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+
+
+        System.out.println("=============================================================================================================================================================================================");
+
+        System.out.println("End Instance variables:");
         System.out.println("-------------------------------------------------------");
         int count = 1;
         vars.forEach(new BiConsumer<String, Object>() {
@@ -86,17 +96,10 @@ public class deployController {
             public void accept(String k, Object v) {
 
                 System.out.println("key: " + k.toString());
-                if (v instanceof Map) {
-
-                    ((Map)v).forEach(new BiConsumer() {
-                        @Override
-                        public void accept(Object k, Object v) {
-                            System.out.println("    | sub_key: " + k.toString());
-                            System.out.println("    | sub_value: " + v.toString());
-                        }
-                    });
-
-
+                if (v instanceof ExposeServiceEntity) {
+                    System.out.println("  | 内容:" + ((ExposeServiceEntity) v).getContent());
+                    System.out.println("  | 状态:" + ((ExposeServiceEntity) v).getStatus());
+                    System.out.println("  | 大小:" + ((ExposeServiceEntity) v).getSize());
                 }
 
             }

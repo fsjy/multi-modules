@@ -1,8 +1,9 @@
 package com.bmsmart.service.local.impl;
 
+import com.bmsmart.constant.CONST;
 import com.bmsmart.service.local.AbstractItmsCalculateService;
 
-public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateService {
+public class ItmsCalculateServiceNerCrfImpl extends AbstractItmsCalculateService {
 
 
 //    @Override
@@ -29,6 +30,16 @@ public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateServic
 //            public void accept(String s, String s2) {
 //                System.out.printf(s.toString());
 //            }
+
+    @Override
+    public String getStatus() {
+        return CONST.OK;
+    }
+
+    @Override
+    public Long getSize() {
+        return Long.valueOf(getResult().length());
+    }
 //        });
 //        System.out.println("");
 //
@@ -48,16 +59,6 @@ public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateServic
 
     @Override
     public String getResult() {
-        return "default";
-    }
-
-    @Override
-    public String getStatus() {
-        return null;
-    }
-
-    @Override
-    public Long getSize() {
-        return null;
+        return "处理：命名实体识别任务——条件随机场，结果正常！";
     }
 }

@@ -13,7 +13,7 @@ public class RuleDelegateWstCrfServiceImpl extends AbstractRuleDelegateService {
     private static final Logger log = LoggerFactory.getLogger(RuleDelegateWstCrfServiceImpl.class);
 
     @Autowired
-    private ItmsCalculateService itmsCalculateService;
+    private ItmsCalculateService itmsCalculateServiceWstCrf;
 
     @Override
     public String getSimpleName() {
@@ -27,6 +27,6 @@ public class RuleDelegateWstCrfServiceImpl extends AbstractRuleDelegateService {
 
     @Override
     protected ItmsCalculateService getCalculateService() {
-        return itmsCalculateService;
+        return itmsCalculateServiceWstCrf;
     }
 }

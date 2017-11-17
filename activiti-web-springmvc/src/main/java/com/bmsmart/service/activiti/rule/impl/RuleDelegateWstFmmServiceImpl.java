@@ -18,7 +18,7 @@ public class RuleDelegateWstFmmServiceImpl extends AbstractRuleDelegateService {
     private static final Logger log = LoggerFactory.getLogger(LocalBusinessRuleTaskDelegateImpl.class);
 
     @Autowired
-    private ItmsCalculateService itmsCalculateService;
+    private ItmsCalculateService itmsCalculateServiceWstFmm;
 
 
     @Override
@@ -33,6 +33,6 @@ public class RuleDelegateWstFmmServiceImpl extends AbstractRuleDelegateService {
 
     @Override
     protected ItmsCalculateService getCalculateService() {
-        return itmsCalculateService;
+        return itmsCalculateServiceWstFmm;
     }
 }

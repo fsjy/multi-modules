@@ -1,8 +1,13 @@
 package com.bmsmart.service.local.impl;
 
+import com.bmsmart.constant.CONST;
 import com.bmsmart.service.local.AbstractItmsCalculateService;
 
-public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateService {
+public class ItmsCalculateServiceWstFmmImpl extends AbstractItmsCalculateService {
+    @Override
+    public String getResult() {
+        return "处理:分词任务——正向字典匹配,结果正常！";
+    }
 
 
 //    @Override
@@ -45,19 +50,16 @@ public class ItmsCalculateServiceDefaultImpl extends AbstractItmsCalculateServic
 //        return null;
 //    }
 
-
-    @Override
-    public String getResult() {
-        return "default";
-    }
-
     @Override
     public String getStatus() {
-        return null;
+        return CONST.OK;
     }
 
     @Override
     public Long getSize() {
-        return null;
+        return Long.valueOf(getResult().length());
     }
+
+
+
 }
