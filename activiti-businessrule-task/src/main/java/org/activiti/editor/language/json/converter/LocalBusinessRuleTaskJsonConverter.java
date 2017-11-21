@@ -24,6 +24,7 @@ import java.util.Map;
 
 /**
  * @author Tijs Rademakers
+ * @author Yanglu
  */
 public class LocalBusinessRuleTaskJsonConverter extends BaseBpmnJsonConverter {
 
