@@ -22,11 +22,11 @@
     -->
 
     <serviceTask id="servicetask1" name="CRFService"
-                 activiti:class="com.bmsmart.service.activiti.java.CrfDelegateService">
+                 activiti:class="cn.com.bmsmart.activiti.service.activiti.java.CrfDelegateService">
     </serviceTask>
 
     <serviceTask id="servicetask2" name="DICService"
-                 activiti:class="com.bmsmart.service.activiti.java.DicDelegateService">
+                 activiti:class="cn.com.bmsmart.activiti.service.activiti.java.DicDelegateService">
 
 
     </serviceTask>

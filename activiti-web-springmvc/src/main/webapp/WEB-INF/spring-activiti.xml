@@ -110,10 +110,10 @@
    ️Add by Yanglu 2017.10.31
     实现JavaDelegate接口的Class交给spring管理，以便在其中注入服务Class
     -->
-    <bean id="CRFDelegateService" class="com.bmsmart.service.activiti.java.CrfDelegateService"/>
-    <bean id="DICDelegateService" class="com.bmsmart.service.activiti.java.DicDelegateService"/>
-    <bean id="ANNDelegateService" class="com.bmsmart.service.activiti.java.AnnDelegateService"/>
-    <bean id="NBMDelegateService" class="com.bmsmart.service.activiti.java.NbmDelegateService"/>
+    <bean id="CRFDelegateService" class="cn.com.bmsmart.activiti.service.activiti.java.CrfDelegateService"/>
+    <bean id="DICDelegateService" class="cn.com.bmsmart.activiti.service.activiti.java.DicDelegateService"/>
+    <bean id="ANNDelegateService" class="cn.com.bmsmart.activiti.service.activiti.java.AnnDelegateService"/>
+    <bean id="NBMDelegateService" class="cn.com.bmsmart.activiti.service.activiti.java.NbmDelegateService"/>
 
     <!--
      Add by Yanglu 2017.11.1
@@ -125,59 +125,59 @@
      -->
     <!-- ■■■■■■■■分子任务——语义模型■■■■■■■■■■■ -->
     <!-- 正向字典匹配 -->
-    <bean id="ruleDelegateWstFmmService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateWstFmmServiceImpl"
+    <bean id="ruleDelegateWstFmmService" class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateWstFmmServiceImpl"
           scope="prototype"/>
     <!-- 条件随机场CRF -->
-    <bean id="ruleDelegateWstCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateWstCrfServiceImpl"
+    <bean id="ruleDelegateWstCrfService" class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateWstCrfServiceImpl"
           scope="prototype"/>
 
     <!-- ■■■■■■■■文本分类任务——语义模型■■■■■■■■ -->
     <!-- 字典匹配 -->
     <bean id="ruleDelegateTccMmsegService"
-          class="com.bmsmart.service.activiti.rule.impl.RuleDelegateTccMmsegServiceImpl" scope="prototype"/>
+          class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateTccMmsegServiceImpl" scope="prototype"/>
     <!-- 条件随机场CRF -->
-    <bean id="ruleDelegateTccCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateTccCrfServiceImpl"
+    <bean id="ruleDelegateTccCrfService" class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateTccCrfServiceImpl"
           scope="prototype"/>
     <!-- 朴素贝叶斯 -->
     <bean id="ruleDelegateTccNavieBService"
-          class="com.bmsmart.service.activiti.rule.impl.RuleDelegateTccNavieBServiceImpl" scope="prototype"/>
+          class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateTccNavieBServiceImpl" scope="prototype"/>
 
     <!-- ■■■■■■■■属性识别任务——语义模型■■■■■■■■ -->
     <!-- 条件随机场 -->
-    <bean id="ruleDelegatePtrCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegatePtrCrfServiceImpl"
+    <bean id="ruleDelegatePtrCrfService" class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegatePtrCrfServiceImpl"
           scope="prototype"/>
 
     <!-- ■■■■■■■■命名实体识别任务——语义模型■■■■■ -->
     <!-- 字典匹配 -->
     <bean id="ruleDelegateNerMmsegService"
-          class="com.bmsmart.service.activiti.rule.impl.RuleDelegateNerMmsegServiceImpl" scope="prototype"/>
+          class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateNerMmsegServiceImpl" scope="prototype"/>
     <!-- 条件随机场 -->
-    <bean id="ruleDelegateNerCrfService" class="com.bmsmart.service.activiti.rule.impl.RuleDelegateNerCrfServiceImpl"
+    <bean id="ruleDelegateNerCrfService" class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateNerCrfServiceImpl"
           scope="prototype"/>
 
 
     <!-- Test for Calculate Service -->
-    <bean id="itmsCalculateServiceNerCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServiceNerCrfImpl"/>
-    <bean id="itmsCalculateServiceNerMmseg" class="com.bmsmart.service.local.impl.ItmsCalculateServiceNerMmsegImpl"/>
-    <bean id="itmsCalculateServicePtrCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServicePtrCrfImpl"/>
-    <bean id="itmsCalculateServiceTccCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServiceTccCrfImpl"/>
-    <bean id="itmsCalculateServiceTccMmseg" class="com.bmsmart.service.local.impl.ItmsCalculateServiceTccMmsegImpl"/>
-    <bean id="itmsCalculateServiceTccNavieB" class="com.bmsmart.service.local.impl.ItmsCalculateServiceTccNavieBImpl"/>
-    <bean id="itmsCalculateServiceWstCrf" class="com.bmsmart.service.local.impl.ItmsCalculateServiceWstCrfImpl"/>
-    <bean id="itmsCalculateServiceWstFmm" class="com.bmsmart.service.local.impl.ItmsCalculateServiceWstFmmImpl"/>
+    <bean id="itmsCalculateServiceNerCrf" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServiceNerCrfImpl"/>
+    <bean id="itmsCalculateServiceNerMmseg" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServiceNerMmsegImpl"/>
+    <bean id="itmsCalculateServicePtrCrf" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServicePtrCrfImpl"/>
+    <bean id="itmsCalculateServiceTccCrf" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServiceTccCrfImpl"/>
+    <bean id="itmsCalculateServiceTccMmseg" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServiceTccMmsegImpl"/>
+    <bean id="itmsCalculateServiceTccNavieB" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServiceTccNavieBImpl"/>
+    <bean id="itmsCalculateServiceWstCrf" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServiceWstCrfImpl"/>
+    <bean id="itmsCalculateServiceWstFmm" class="cn.com.bmsmart.activiti.service.local.impl.ItmsCalculateServiceWstFmmImpl"/>
 
 
     <!-- Add customer object type  -->
     <bean id="executedServicesEntitiesType" class="org.activiti.engine.impl.variable.ExecutedServicesEntitiesType">
         <constructor-arg value="executedServicesEntitiesType"/>
         <constructor-arg type="java.lang.Class"
-                         value="com.bmsmart.service.activiti.factory.entities.ExecutedServicesEntities"/>
+                         value="cn.com.bmsmart.activiti.service.activiti.factory.entities.ExecutedServicesEntities"/>
     </bean>
 
     <bean id="serviceType" class="org.activiti.engine.impl.variable.ServiceType">
         <constructor-arg value="exposeServiceType"/>
         <constructor-arg type="java.lang.Class"
-                         value="com.bmsmart.service.activiti.factory.entities.ExposeServiceEntity"/>
+                         value="cn.com.bmsmart.activiti.service.activiti.factory.entities.ExposeServiceEntity"/>
     </bean>
 
 

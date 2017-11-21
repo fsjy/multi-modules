@@ -8,7 +8,6 @@
 <%@page session="false" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -276,9 +275,12 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Local Model Procedure Page</a>
             </div>
+
+            <!-- shiro switcher
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Hello <shiro:principal/></a>
             </div>
+            -->
         </div>
     </nav>
 

@@ -17,7 +17,7 @@
         <sequenceFlow id="flow1" sourceRef="start1" targetRef="service1"></sequenceFlow>
         <businessRuleTask id="service2" name="RULE测试服务2"
                           activiti:ruleVariablesInput="title,service1"
-                          activiti:class="com.bmsmart.service.activiti.rule.impl.RuleDelegateTccMmsegServiceImpl">
+                          activiti:class="cn.com.bmsmart.activiti.service.activiti.rule.impl.RuleDelegateTccMmsegServiceImpl">
 
         </businessRuleTask>
 

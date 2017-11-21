@@ -17,7 +17,7 @@
 
 
 
-    <context:component-scan base-package="com.bmsmart.controllers" />
+    <context:component-scan base-package="cn.com.bmsmart.activiti.controllers" />
     <!-- Modified by Yanglu 2017.10.26
     由于使用activiti-rest 所以需要扫描的包变成 org.com.bmsmart.rest
 
@@ -31,10 +31,10 @@
     <aop:aspectj-autoproxy proxy-target-class="true" />
 
     <!-- 测试  -->
-    <bean name="AspectCalculateParamsPointcut" class="com.bmsmart.aop.aspect.impl.AspectCalculateParamsPointcutImpl"/>
+    <bean name="AspectCalculateParamsPointcut" class="cn.com.bmsmart.activiti.aop.aspect.impl.AspectCalculateParamsPointcutImpl"/>
 
     <!-- 目的 -->
-    <bean name="AspectCalculateModelSavePointcut" class="com.bmsmart.aop.aspect.impl.AspectModelSavePointcutImpl"/>
+    <bean name="AspectCalculateModelSavePointcut" class="cn.com.bmsmart.activiti.aop.aspect.impl.AspectModelSavePointcutImpl"/>
 
 
 
