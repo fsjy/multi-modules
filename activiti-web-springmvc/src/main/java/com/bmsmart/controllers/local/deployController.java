@@ -12,6 +12,9 @@ import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.validation.ProcessValidator;
+import org.activiti.validation.ProcessValidatorFactory;
+import org.activiti.validation.ValidationError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
@@ -116,6 +120,9 @@ public class deployController {
 
     protected String deployModelerModel(final ObjectNode modelNode) {
         BpmnModel model = new BpmnJsonConverter().convertToBpmnModel(modelNode);
+
+
+
         byte[] bpmnBytes = new BpmnXMLConverter().convertToXML(model);
 
         String processName = "temp_" + ".bpmn20.xml";

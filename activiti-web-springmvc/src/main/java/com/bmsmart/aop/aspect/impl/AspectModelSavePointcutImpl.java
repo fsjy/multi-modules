@@ -1,10 +1,17 @@
 package com.bmsmart.aop.aspect.impl;
 
+import com.bmsmart.aop.aspect.entities.ProblemsNativeMapping;
 import com.bmsmart.constant.CONST;
 import com.bmsmart.tookit.JsonModifier;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.editor.language.json.converter.BpmnJsonConverter;
+import org.activiti.engine.ActivitiIllegalArgumentException;
+import org.activiti.validation.ProcessValidator;
+import org.activiti.validation.ProcessValidatorFactory;
+import org.activiti.validation.ValidationError;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,6 +22,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -74,6 +83,7 @@ public class AspectModelSavePointcutImpl {
             String values = multiValueMap.getFirst("json_xml").toString();
 
             ObjectNode modelJson = (ObjectNode) objectMapper.readTree(values);
+            ObjectNode checkNode = (ObjectNode) objectMapper.readTree(values);
 
             // 为可唯一识别每一个建立的process,替换原有process_id为userid + "_" + resource_id(即数据库【ACT_RE_MODEL】中的ID_)
             JsonModifier.changeNodeValue(modelJson,
@@ -86,8 +96,40 @@ public class AspectModelSavePointcutImpl {
 
             ((MultiValueMap) objects[1]).set("json_xml", modelJson.toString());
 
+
+            // 暂时 ------------------------------------------------------------------------------------
+            JsonModifier.changeNodeValue(checkNode,
+                    CONST.PROPERTY_ID,
+                    CONST.businessRuleReplaceValues,
+                    CONST.BUSINESSRULE_BASE,
+                    true);
+            // 暂时 ------------------------------------------------------------------------------------
+
+            BpmnModel model = new BpmnJsonConverter().convertToBpmnModel(checkNode);
+
+            ProcessValidatorFactory factory = new ProcessValidatorFactory();
+            ProcessValidator validator = factory.createDefaultProcessValidator();
+            List<ValidationError> list = validator.validate(model);
+
+            Map<String, String> map = new HashMap<>();
+            if (list.size() > 0) {
+                list.forEach(s -> {
+                    map.put(s.getProblem(), ProblemsNativeMapping.mapping(s.getProblem()));
+                });
+
+                StringBuffer stringBuffer = new StringBuffer();
+                map.forEach((k,v)-> {
+                    if (null != v) {
+                        stringBuffer.append(v.toString()).append("\n");
+                    }
+                });
+
+                throw new ActivitiIllegalArgumentException(stringBuffer.toString());
+
+            }
+
         } else {
-            throw new Exception("can not resolve json");
+            throw new ActivitiIllegalArgumentException("can not resolve json");
         }
 
 
